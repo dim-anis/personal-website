@@ -1,6 +1,45 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    title: "Dmitry Anisov Blog",
+    siteUrl: `https://www.dimanis.dev`,
   },
-  plugins: [],
-}
+  plugins: [
+    "gatsby-plugin-styled-components",
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Space Grotesk",
+              variants: ["300", "400", "500", "600", "700", "800", "900"],
+              fontDisplay: 'swap',
+            },
+          ],
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          posts: require.resolve(`./src/pages/blog/{mdx.slug}.js`)
+        }
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path:`${__dirname}/posts`,
+      }
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
+      },
+    },
+
+  ],
+};

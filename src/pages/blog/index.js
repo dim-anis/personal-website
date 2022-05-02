@@ -1,17 +1,17 @@
 import * as React from "react";
-import Layout from "../components/layoutMain";
-import Main from "../components/main";
-import PostPreview from "../components/postPreview";
+import Layout from "../../components/layoutMain.js";
+import Main from "../../components/main";
+import PostPreview from "../../components/postPreview";
 import { graphql } from "gatsby";
 
-const IndexPage = ({ data }) => {
+const BlogPage = ({ data }) => {
   return (
-    <Layout pageTitle="Latest">
-      <Main title="Latest">
+    <Layout pageTitle="Blog">
+      <Main title="Blog">
         {data.allMdx.nodes.map((item) => (
           <PostPreview
             title={item.frontmatter.title}
-            description={item.frontmatter.date}
+            description={item.frontmatter.description}
             to={`/blog/${item.slug}`}
           />
         ))}
@@ -25,7 +25,7 @@ export const data = graphql`
     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
         frontmatter {
-          date
+          description
           title
         }
         id
@@ -35,4 +35,4 @@ export const data = graphql`
   }
 `;
 
-export default IndexPage;
+export default BlogPage;
