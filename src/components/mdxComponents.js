@@ -40,13 +40,18 @@ const StyledPre = styled.pre`
   font-size: 1rem;
   position: relative;
   margin-bottom: 2rem;
+  font-family: var(--font-code);
+  overflow-x: auto;
+  z-index: -1;
 `;
 
 const Tag = styled.span`
   position: absolute;
-  right: 1rem;
-  top: 0;
-  color: #cfcfcf;
+  right: .75rem;
+  top: 0.125rem;
+  color: var(--color-background-gray);
+  opacity: 0.25;
+  user-select: none;
 `;
 
 export const CodeBlock = ({ children, className }) => {
@@ -77,4 +82,3 @@ export const CodeBlock = ({ children, className }) => {
     </Highlight>
   );
 };
-

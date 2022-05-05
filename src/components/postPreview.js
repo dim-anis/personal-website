@@ -10,6 +10,11 @@ const Container = styled.div`
   gap: 0.5rem;
   cursor: pointer;
   border-radius: 15px;
+
+  @media(min-width: 895px) {
+    border: 1px solid var(--color-background-gray);
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h3`
@@ -17,9 +22,6 @@ const Title = styled.h3`
 
 const Description = styled.p`
   width: 100%;
-  @media (min-width: 768px) {
-    width: 75%;
-  }
 `;
 
 const StyledLink = styled((props) => <Link {...props} />)`

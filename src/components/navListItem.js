@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 
 const StyledListItem = styled.li`
   cursor: pointer;
+  padding: .25rem;
   :hover {
     color: var(--color-main);
   }
