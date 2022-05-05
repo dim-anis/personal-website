@@ -1,23 +1,24 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const Img = styled.img`
-  width: 100%;
-`;
-
 const Button = styled.button`
-  width: 1.5rem;
+  width: 2rem;
   aspect-ratio: 1;
-  border: none;
-  padding: 0;
-  background-color: transparent;
+  padding: 0.25rem;
+  border: 1px solid var(--color-text);
+  border-radius: 5px;
   cursor: pointer;
+  background: transparent;
+
+  @media(max-width: 564px) {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  }
 `;
 
 const NavButtonItem = ({ icon, alt }) => {
   return (
     <Button>
-      <Img src={icon} alt={alt} />
+      <img src={icon} alt={alt} />
     </Button>
   );
 };

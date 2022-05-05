@@ -15,6 +15,11 @@ module.exports = {
               variants: ["300", "400", "500", "600", "700", "800", "900"],
               fontDisplay: 'swap',
             },
+            {
+              family: "Fira Code",
+              variants: ["400"],
+              fontDisplay: 'swap',
+            }
           ],
         },
       },

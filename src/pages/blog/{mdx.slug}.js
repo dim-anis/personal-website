@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react";
 import styled from "styled-components";
+import ArticleHero from "../../components/articleHero";
 
 import { P, H2, CodeBlock } from "../../components/mdxComponents";
 
@@ -21,20 +22,17 @@ const Main = styled.main`
   margin: auto;
 `;
 
-const StyledH1 = styled.h1`
-	font-size: calc(2.5rem);
-	text-align: center;
-	margin-top: 1rem;
-	margin-bottom: 2rem;
-`;
-
 const BlogPost = ({ data }) => {
   return (
     <Layout
       pageTitle={data.mdx.frontmatter.title}
     >
       <Main>
-				<StyledH1>{data.mdx.frontmatter.title}</StyledH1>
+				<ArticleHero
+          title={data.mdx.frontmatter.title}
+          subtitle={"subtitle"}
+          tag={"javascript"}
+        />
         <MDXProvider components={components}>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </MDXProvider>

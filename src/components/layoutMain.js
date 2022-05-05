@@ -2,7 +2,7 @@ import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "../components/header";
 
-const Layout = ({ pageTitle, title, nowaves, children }) => {
+const Layout = ({ pageTitle, title, children }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
