@@ -9,15 +9,13 @@ const Container = styled.div`
   width: 100%;
   gap: 0.5rem;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: ${props => props.theme.backgroundSecondary};
 
   @media(min-width: 895px) {
-    border: 1px solid var(--color-background-gray);
-    padding: 1rem;
+    padding: 1.5rem;
   }
-`;
-
-const Title = styled.h3`
 `;
 
 const Description = styled.p`
@@ -36,7 +34,7 @@ const StyledLink = styled((props) => <Link {...props} />)`
 const PostPreview = ({title, description, to}) => {
   return (
     <Container>
-      <Title>{title}</Title>
+      <h3>{title}</h3>
       <Description>{description}</Description>
       <StyledLink to={to}>Read more</StyledLink>
     </Container>

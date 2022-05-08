@@ -6,13 +6,15 @@ import { MDXProvider } from "@mdx-js/react";
 import styled from "styled-components";
 import ArticleHero from "../../components/articleHero";
 
-import { P, H2, CodeBlock } from "../../components/mdxComponents";
+import { P, H2, CodeBlock, BlockQuote, InlineCode } from "../../components/mdxComponents";
 
 const components = {
   p: P,
   h2: H2,
+  blockquote: BlockQuote,
   pre: (props) => <div {...props} />,
   code: CodeBlock,
+  "p.inlineCode": InlineCode,
 };
 
 const Main = styled.main`

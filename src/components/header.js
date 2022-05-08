@@ -12,7 +12,7 @@ const StyledHeader = styled.header`
 width: 100%;
 margin: 2rem auto;
 max-width: 1100px;
-background: hsl(0 0% 100% / 0.5);
+background: ${props => props.theme.backgroundTransparent};
 backdrop-filter: blur(0.5rem);
 height: auto;
 position: sticky;
@@ -29,7 +29,7 @@ display: flex;
 justify-content: flex-start;
 align-items: baseline;
 padding: 0 1rem;
-gap: 2rem;
+gap: 3rem;
 position: relative;
 `;
 
@@ -47,7 +47,7 @@ gap: 1rem;
 
 const StyledLogoLink = styled((props) => <Link {...props} />)`
 text-decoration: none;
-color: var(--text-color);
+color: ${props => props.theme.fontColor};
 font-weight: 800;
 font-size: 1.5rem;
 padding: 0;
@@ -57,9 +57,7 @@ const NavRight = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-gap: 1rem;
 flex-grow: 1;
-z-index: 1;
 
 @media(max-width: 35em) {
   position: fixed;
@@ -68,12 +66,12 @@ z-index: 1;
   align-items: flex-start;
   justify-content: flex-start;
   inset: 0 0 0 35%;
-  background: hsl(0 0% 0% / 0.8);
-  backdrop-filter: blur(1rem);
+  background: hsl(0 0% 0% / 0.85);
+  backdrop-filter: blur(2rem);
   color: var(--color-text-white);
   padding: min(30vh, 10rem) 2em;
   gap: 5rem;
-  transform: ${props => props.open ? "translateX(0%)" : "translateX(100%)"};//
+  transform: ${props => props.open ? "translateX(0%)" : "translateX(100%)"};
   will-change: transform;
   transition: ${props => props.open ? "transform 350ms ease-out" : "none"};
 }
@@ -102,7 +100,7 @@ const NavToggle = styled.button`
   background: transparent;
   display: none;
   cursor: pointer;
-  filter: ${props => props.open ? "invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%)" : "none"};
+  filter: ${props => props.open ? "invert(87%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%)" : "none"};
 
   @media(max-width: 35em) {
     display: block;

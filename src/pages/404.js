@@ -1,54 +1,49 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const StyledLink = styled((props) => <Link {...props} />)`
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 600;
+  border: 1px solid var(--color-text);
+  padding: .5rem;
+  transition: all 350ms ease-out;
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+  &:hover {
+    background-color: var(--color-text);
+    color: var(--color-text-white);
+  }
+`;
 
-// markup
+const StyledMain = styled.main`
+  height: 100vh;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const StyledH1 = styled.h1`
+  font-size: 10rem;
+  margin-top: 5rem;
+`;
+
+const StyledSpan = styled.span`
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+`;
+
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
+    <StyledMain>
       <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
+      <StyledH1>404 <StyledSpan>Page not found</StyledSpan></StyledH1>
+      <p>
+        <StyledLink to="/">Go home</StyledLink>
       </p>
-    </main>
+    </StyledMain>
   )
 }
 
-export default NotFoundPage
+export default NotFoundPage;

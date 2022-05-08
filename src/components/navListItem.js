@@ -4,8 +4,8 @@ import { Link } from "gatsby";
 
 const StyledListItem = styled.li`
   cursor: pointer;
-  padding: .25rem;
-  :hover {
+
+  &:hover {
     color: var(--color-main);
   }
 `;
@@ -14,6 +14,7 @@ const StyledLink = styled((props) => <Link {...props} />)`
   text-decoration: none;
   color: var(--text-color);
   font-weight: 600;
+  padding: .5rem;
 `;
 
 const ListItem = ({ to, name }) => {
