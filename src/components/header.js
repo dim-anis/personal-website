@@ -17,6 +17,7 @@ backdrop-filter: blur(0.5rem);
 height: auto;
 position: sticky;
 top: 0;
+z-index: 10;
 
 @media(max-width: 768px) {
   margin: 0 auto;
@@ -61,19 +62,19 @@ flex-grow: 1;
 
 @media(max-width: 35em) {
   position: fixed;
+  font-size: 1.5rem;
   flex-direction: column;
   height: 100vh;
   align-items: flex-start;
   justify-content: flex-start;
   inset: 0 0 0 35%;
-  background: hsl(0 0% 0% / 0.85);
-  backdrop-filter: blur(2rem);
-  color: var(--color-text-white);
+  background: ${props => props.theme.backgroundTransparent};
+  color: ${props => props.theme.menuColor};
   padding: min(30vh, 10rem) 2em;
   gap: 5rem;
   transform: ${props => props.open ? "translateX(0%)" : "translateX(100%)"};
   will-change: transform;
-  transition: ${props => props.open ? "transform 350ms ease-out" : "none"};
+  transition: transform 350ms ease-out; //${props => props.open ? "transform 350ms ease-out" : "none"};
 }
 `;
 
@@ -95,12 +96,16 @@ const NavToggle = styled.button`
   aspect-ratio: 1;
   top: 0.75rem;
   right: 1rem;
-  z-index: 9999;
+  z-index: 100;
   border: 0;
   background: transparent;
   display: none;
   cursor: pointer;
-  filter: ${props => props.open ? "invert(87%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%)" : "none"};
+  color: ${props => props.theme.fontColorSecondary};
+
+  &:hover {
+    color: ${props => props.theme.fontColor};
+  }
 
   @media(max-width: 35em) {
     display: block;
@@ -119,9 +124,9 @@ const Header = () => {
             dim<Dot>.</Dot>anis
           </StyledLogoLink>
         </LogoContainer>
-          <NavToggle open={open} onClick={() => setOpen(prev => !prev)}>
-            <img src={open ? CloseIcon : MenuIcon} alt={open ? "close menu" : "open menu"}/>
-          </NavToggle>
+        <NavToggle open={open} onClick={() => setOpen(prev => !prev)}>
+          {open ? <CloseIcon /> : <MenuIcon />}
+        </NavToggle>
         <NavRight open={open}>
           <nav>
             <NavList>
@@ -130,7 +135,7 @@ const Header = () => {
               <ListItem to="/projects" name="Projects" />
             </NavList>
           </nav>
-          <NavButtonItem icon={SunIcon} alt="theme toggle" />
+          <NavButtonItem icon={<SunIcon />} alt="theme toggle" />
         </NavRight>
       </NavContainer>
     </StyledHeader>

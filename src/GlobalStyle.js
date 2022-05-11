@@ -3,13 +3,14 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   :root {
     --color-background: hsl(0, 0%, 95%);
-    --color-background-transparent: hsl(0 0% 95% / 0.5);
+    --color-background-transparent: hsl(0 0% 95% / 0.85);
     --color-background-secondary: hsl(0, 0%, 100%);
     --color-background-dark: hsl(222, 22%, 10%);
-    --color-background-dark-transparent: hsl(0, 0%, 0% / 0.5);
+    --color-background-dark-transparent: hsl(222 22% 10% / 0.85);
     --color-background-dark-secondary: hsl(222, 22%, 15%);
-    --color-text: hsl(222, 22%, 5%); //Jet (hsl 222, 22%, 5%)
-    --color-text-medium: hsl(222, 22%, 10%);
+    --color-text: hsl(222, 22%, 13%); //Jet (hsl 222, 22%, 5%)
+    --color-text-medium: hsl(222, 22%, 40%);
+    --color-text-low: hsl(222, 22%, 62%);
     --color-text-white: hsl(0, 0%, 87%); //
     --color-text-white-medium: hsl(0, 0%, 60%);
     --color-text-white-low: hsl(0, 0%, 38%);
