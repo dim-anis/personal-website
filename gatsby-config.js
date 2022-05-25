@@ -1,9 +1,20 @@
-module.exports = {
-  siteMetadata: {
-    title: "Dmitry Anisov Blog",
-    siteUrl: `https://www.dimanis.dev`,
+const siteMetadata = {
+  title: "Dmitry Anisov Blog",
+  description: "Just trying to make the WEB a better and sharing what I'm learning while doing that.",
+  image: "",
+  siteUrl: "https://www.dimanis.dev/",
+  siteLanguage: "en-US",
+  siteLocale: "en_us",
+  social: {
+    twitter: "@DmitryAnisov"
   },
+  authorName: "Dmitry Anisov",
+}
+
+module.exports = {
+  siteMetadata: siteMetadata,
   plugins: [
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
     {
       resolve: `gatsby-plugin-webfonts`,

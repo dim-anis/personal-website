@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { UserContext } from "../../gatsby-browser";
+import { UserContext } from "../contexts/UserContext";
 
 const Button = styled.button`
   width: 2rem;

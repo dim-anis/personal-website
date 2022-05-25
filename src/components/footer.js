@@ -1,10 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+
+import ListItem from "./navListItem";
 
 const FooterStyled = styled.footer`
   width: 100%;
-  border-top: 1px solid var(--color-background-gray);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-color: ${props => props.theme.backgroundSecondary};
   position: relative;
 `;
 const FooterInfoContainer = styled.div`
@@ -17,15 +20,11 @@ const FooterInfoContainer = styled.div`
   gap: 2rem;
 `;
 
-const LinkContainer = styled.div`
+const LinkContainer = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const StyledLink = styled((props) => <Link {...props} />)`
-  color: ${props => props.theme};
-  text-decoration: none;
+  list-style: none;
 `;
 
 const Footer = () => {
@@ -33,10 +32,9 @@ const Footer = () => {
     <FooterStyled>
       <FooterInfoContainer>
         <LinkContainer>
-          <h3>Links</h3>
-          <StyledLink to="/">Link 1</StyledLink>
-          <StyledLink to="/">Link 2</StyledLink>
-          <StyledLink to="/">Link 3</StyledLink>
+          <ListItem to="/" name="Latest" />
+          <ListItem to="/blog" name="Blog" />
+          <ListItem to="/projects" name="Projects" />
         </LinkContainer>
         <div>
           <p>© 2022 - present Dmitry Anisov.</p>

@@ -23,17 +23,26 @@ const StyledH2 = styled.h2`
 const Tag = styled.div`
     color: var(--color-main);
     margin-bottom: 1rem;
+    // border: 1px solid var(--color-main);
+    // border-radius: 5px;
+    // padding-block: 0.125rem;
+    // padding-left: 0.5rem;
+    // padding-right: 0.5rem;
 `;
 
-const ArticleHero = ({title, subtitle, tag, slug}) => {
+const TagContainer = styled.div`
+    display: flex;
+    gap: 1rem;
+`;
+
+const ArticleHero = ({title, subtitle, tags, slug}) => {
     return (
         <Container>
-            <Tag>{tag}</Tag>
+            <TagContainer>
+              {tags.map((tag) => <Tag>{tag}</Tag>)}
+            </TagContainer>
             <h1>{title}</h1>
             <StyledH2>{subtitle}</StyledH2>
-            <div>
-
-            </div>
         </Container>
     );
 }

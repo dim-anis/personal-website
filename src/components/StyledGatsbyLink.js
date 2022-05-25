@@ -6,14 +6,18 @@ const StyledLink = styled((props) => <Link {...props} />)`
   text-decoration: none;
   color: var(--text-color);
   font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    color: var(--color-main);
+  }
 `;
 
-const StyledGatsbyLink = ({ to, name }) => {
-    return (
-        <StyledLink to={to}>
-            {name}
-        </StyledLink>
-    )
+const StyledGatsbyLink = ({children}) => {
+  return (
+    <StyledLink>
+      {children}
+    </StyledLink>
+  )
 }
 
 export default StyledGatsbyLink;

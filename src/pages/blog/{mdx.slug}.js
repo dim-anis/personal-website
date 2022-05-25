@@ -1,16 +1,23 @@
 import * as React from "react";
-import Layout from "../../components/layoutMain";
+import Layout from "../../components/layout";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react";
 import styled from "styled-components";
 import ArticleHero from "../../components/articleHero";
 
-import { P, H2, CodeBlock, BlockQuote, InlineCode } from "../../components/mdxComponents";
+import { SEO } from "../../components/SEO";
+
+import { P, H2, H3, CodeBlock, BlockQuote, InlineCode, UL, LI, A } from "../../components/mdxComponents";
+import { useSiteMetadata } from "../../hooks/useSiteMetadata";
 
 const components = {
   p: P,
   h2: H2,
+  h3: H3,
+  ul: UL,
+  li: LI,
+  a: A,
   blockquote: BlockQuote,
   pre: (props) => <div {...props} />,
   code: CodeBlock,
@@ -24,16 +31,29 @@ const Main = styled.main`
   margin: auto;
 `;
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ data, location }) => {
+  const { 
+    siteUrl
+  } = useSiteMetadata();
+  
+  //removing an extra "/" from the "path" variable
+  const path = location.href ? location.pathname.slice(1) : "";
+
   return (
     <Layout
       pageTitle={data.mdx.frontmatter.title}
     >
+      <SEO 
+        description={data.mdx.frontmatter.description}
+        title={data.mdx.frontmatter.title} 
+        url={`${siteUrl}${path}`} 
+        type={"article"}
+      />
       <Main>
-				<ArticleHero
+        <ArticleHero
           title={data.mdx.frontmatter.title}
-          subtitle={"subtitle"}
-          tag={"javascript"}
+          subtitle={data.mdx.frontmatter.subtitle}
+          tags={data.mdx.frontmatter.tags}
         />
         <MDXProvider components={components}>
           <MDXRenderer>{data.mdx.body}</MDXRenderer>
@@ -50,6 +70,8 @@ export const query = graphql`
         date
         description
         title
+        subtitle
+        tags
       }
       id
       body

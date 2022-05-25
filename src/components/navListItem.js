@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 
 const StyledListItem = styled.li`
   cursor: pointer;
+  transition: color 200ms ease-in-out;
 
   &:hover {
     color: var(--color-main);
@@ -19,7 +20,7 @@ const StyledLink = styled((props) => <Link {...props} />)`
 
 const ListItem = ({ to, name }) => {
   return (
-    <StyledListItem>
+    <StyledListItem key={name}>
       <StyledLink to={to}>{name}</StyledLink>
     </StyledListItem>
   );
