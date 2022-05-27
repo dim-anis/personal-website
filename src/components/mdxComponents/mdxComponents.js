@@ -1,10 +1,6 @@
 import * as React from "react";
-import Highlight, { defaultProps } from "prism-react-renderer";
-import darkTheme from "prism-react-renderer/themes/vsDark";
-import lightTheme from "prism-react-renderer/themes/vsLight";
 
 import styled from "styled-components";
-import { UserContext } from "../contexts/UserContext";
 
 //Paragraph styles
 
@@ -104,7 +100,7 @@ export const BlockQuote = ({ children }) => (
   <StyledBlockQuote>{children}</StyledBlockQuote>
 );
 
-//Code and Inline-Code styles
+//Inline-Code styles
 
 const StyledCode = styled.code`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -113,59 +109,3 @@ const StyledCode = styled.code`
 `;
 
 export const InlineCode = (props) => <StyledCode {...props}></StyledCode>;
-
-const StyledPre = styled.pre`
-  padding: 2rem 1rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  position: relative;
-  margin-bottom: 1rem;
-  font-family: var(--font-code);
-  overflow-x: auto;
-
-  @media(min-width: 35em) {
-    padding: 2rem;
-  }
-`;
-
-const Tag = styled.span`
-  position: absolute;
-  right: 1rem;
-  top: 0.5rem;
-  color: ${(props) => props.theme.fontColorSecondary};
-  opacity: 0.25;
-  user-select: none;
-`;
-
-export const CodeBlock = ({ children, className }) => {
-  const language = className.replace(/language-/, "") || "";
-
-  return (
-    <UserContext.Consumer>
-      {(context) => (
-        <Highlight
-          {...defaultProps}
-          code={children.trim()}
-          language={language}
-          theme={context.isDark ? darkTheme : lightTheme}
-        >
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <StyledPre className={className} style={style}>
-              <Tag>{language}</Tag>
-              {tokens.map((line, index) => {
-                const lineProps = getLineProps({ line, key: index });
-                return (
-                  <div key={index} {...lineProps}>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
-                  </div>
-                );
-              })}
-            </StyledPre>
-          )}
-        </Highlight>
-      )}
-    </UserContext.Consumer>
-  );
-};
