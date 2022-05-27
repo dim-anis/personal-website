@@ -7,7 +7,15 @@ tags: ["javascript", "React", "software architecture"]
 publish: boolean
 ---
 
-Some text here...
+import { Link } from "../src/components/mdxLink";
+
+When it comes to starting a new React project the first decision that I'm usually faced with is how do I properly arrange files and folders within it. React, being an unopinionated library, doesn't make it any easier.
+
+Anything goes in the React universe and while I appreciate the freedom I find that it sometimes may lead to analysis paralysis. Then I remember the advice of the React team to just start writing if you find yourself overthinking the structure of your project too much. And so I do, but I never come back to it to clean up the folder structure and the project ends up looking messy and amateurish. 
+
+This isn't something to stress over too much if you're a solo developer, however I can imagine that it may become a problem when you're working in a team.
+
+While I do respect the advice of "just doing it" and arguably I need to be more like that, it turns out that there may be **better starting points** for your project structure which may help keeping your application clean over the long run.
 
 ## Why File Structure  Matters
 
@@ -100,7 +108,7 @@ As our project grows in size and we start adding other components as well as sty
 
 At this stage it makes sense to create folders for each component and it's associated files such as styles and tests to keep everything more neat and easily accessible.  My weapon of choice when it comes to styling is a CSS-in-JS library called `styled-components` and to be honest I usually just place styles right inside of the component file itself, but here they're placed in the same folder next to the component. Ultimately the choice is yours.
 
-> As [Max Rozen](https://maxrozen.com/guidelines-improve-react-app-folder-structure#1-on-testing) brilliantly pointed it out putting your tests together with your components compared to hiding it in a separate `__tests__` folder has _an additional benefit_ of encouraging you or other people working on the project to actually do more tests.
+> As Max Rozen brilliantly [pointed it out](https://maxrozen.com/guidelines-improve-react-app-folder-structure#1-on-testing "On testing") putting your tests together with your components compared to hiding it in a separate `__tests__` folder has _an additional benefit_ of encouraging you or other people working on the project to actually use them.
 
 It is also a common practice to put all of the components in a separate `components` folder within `src` . 
 
@@ -197,11 +205,11 @@ Inevitably there will be some generalized hooks and helpers but that's alright. 
 
 ### Where to go from here?
 
-Another popular approach to designing folder structure is **organizing files by feature**. It's actually one of the first approaches [mentioned on the React website](https://reactjs.org/docs/faq-structure.html#grouping-by-features-or-routes).
+Another popular approach to designing folder structure is **organizing files by feature**. It's actually one of the first approaches [mentioned on the React website](https://reactjs.org/docs/faq-structure.html#grouping-by-features-or-routes "grouping by features or routes").
 
 The team acknowledges that categorizing files into features can be challenging as it's very subjective. However this approach is not without it's advantages and to be fair I've never personally worked on any even remotely large React projects so I have yet to appreciate it's uses.
 
-If you'd like to learn more about the feature-driven structure and why you may want to adopt it check out [this article by Khalil Stemmler](https://khalilstemmler.com/articles/software-design-architecture/feature-driven/).
+If you'd like to learn more about the feature-driven structure and why you may want to adopt it check out [this article by Khalil Stemmler](https://khalilstemmler.com/articles/software-design-architecture/feature-driven/ "feature driven").
 
 ## General Guidelines
 
@@ -210,11 +218,11 @@ If you'd like to learn more about the feature-driven structure and why you may w
 - keep files that change together close to each other
 - don't overthink it
 
-## Conclusion
+## Wrapping Up
 
 > “Premature optimization is the root of all evil (or at least most of it) in programming.” — Donald Ervin Knuth
 
-It's hard to disagree with this statement and some will even argue that you just need to start writing and the right structure will naturally materialize through organizing and reorganizing files within the project or, in [Dan Abramov's words](https://react-file-structure.surge.sh/),  "move files around until it feels right".
+It's hard to disagree with this statement and some will even argue that you just need to start writing and the right structure will naturally materialize through organizing and reorganizing files within the project or, in [Dan Abramov's words](https://react-file-structure.surge.sh/ "move it"),  "move files around until it feels right".
 
 You could probably get away with that just fine for a while, especially as a solo developer. But what if there's a better way?
 

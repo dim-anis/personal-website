@@ -84,7 +84,7 @@ const LogoContainer = styled.div`
 `;
 
 const Dot = styled.em`
-color: var(--color-main);
+color: ${(props) => props.theme.colorBrand};
 font-size: 2rem;
 font-style: normal;
 `;

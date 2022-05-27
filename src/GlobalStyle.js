@@ -16,6 +16,9 @@ export const GlobalStyle = createGlobalStyle`
     --color-text-white-low: hsl(0, 0%, 38%);
     --color-text-gray: hsl(222, 22%, 60%);
     --color-main: hsl(212, 93%, 49%); //Blue Gray
+    --color-main-light: hsl(212, 93%, 95%);
+    --color-main-light-dark: hsl(212, 35%, 20%);
+    --color-main-dark: hsl(212, 85%, 70%);
     --color-secondary: hsl(212, 46%, 85%);
 
     --font-code: 'Fira Code', monospace;
@@ -30,17 +33,14 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar {
     width: 10px;
   }
-
   ::-webkit-scrollbar-track {
     background-color: var(--color-background-gray);
     border-radius: 100px;
   }
-
   ::-webkit-scrollbar-thumb {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 100px;
   }
-
   html {
     scrollbar-color: var(--color-background-gray);
     scrollbar-width: thin;
@@ -58,6 +58,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.fontColor};
     background: ${props => props.theme.body};
   }
+
   img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;

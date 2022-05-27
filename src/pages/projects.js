@@ -1,5 +1,5 @@
 import * as React from "react";
-//import styled from "styled-components";
+
 import PostPreview from "../components/postPreview";
 import Main from "../components/main";
 import Layout from "../components/layout"

@@ -36,8 +36,7 @@ const BlogPost = ({ data, location }) => {
     siteUrl
   } = useSiteMetadata();
   
-  //removing an extra "/" from the "path" variable
-  const path = location.href ? location.pathname.slice(1) : "";
+  const path = location.href ? location.pathname : "";
 
   return (
     <Layout

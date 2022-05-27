@@ -10,6 +10,7 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   background: transparent;
+  transition: fill 250ms ease-in-out;
   fill: ${props => props.theme.fontColorSecondary};
 
   &:hover {

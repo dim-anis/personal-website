@@ -14,6 +14,11 @@ const Container = styled.div`
     }
 `;
 
+const StyledH1 = styled.h1`
+    font-size: 2.3rem;
+		text-align: center;
+`;
+
 const StyledH2 = styled.h2`
     color: var(--color-text-gray);
     margin-top: 1rem;
@@ -21,13 +26,8 @@ const StyledH2 = styled.h2`
 `;
 
 const Tag = styled.div`
-    color: var(--color-main);
+    color: ${(props) => props.theme.colorBrand};
     margin-bottom: 1rem;
-    // border: 1px solid var(--color-main);
-    // border-radius: 5px;
-    // padding-block: 0.125rem;
-    // padding-left: 0.5rem;
-    // padding-right: 0.5rem;
 `;
 
 const TagContainer = styled.div`
@@ -35,16 +35,16 @@ const TagContainer = styled.div`
     gap: 1rem;
 `;
 
-const ArticleHero = ({title, subtitle, tags, slug}) => {
-    return (
-        <Container>
-            <TagContainer>
-              {tags.map((tag) => <Tag>{tag}</Tag>)}
-            </TagContainer>
-            <h1>{title}</h1>
-            <StyledH2>{subtitle}</StyledH2>
-        </Container>
-    );
+const ArticleHero = ({ title, subtitle, tags, slug }) => {
+	return (
+		<Container>
+			<TagContainer>
+				{tags.map((tag) => <Tag>{tag}</Tag>)}
+			</TagContainer>
+			<StyledH1>{title}</StyledH1>
+			<StyledH2>{subtitle}</StyledH2>
+		</Container>
+	);
 }
 
 export default ArticleHero;

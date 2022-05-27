@@ -9,6 +9,7 @@ const Container = styled.main`
 
 const StyledH1 = styled.h1`
   grid-column: 1 / -1;
+  font-size: 2.5rem;
 `;
 
 const StyledSection = styled.section`

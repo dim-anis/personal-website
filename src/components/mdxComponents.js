@@ -9,7 +9,7 @@ import { UserContext } from "../contexts/UserContext";
 //Paragraph styles
 
 const StyledP = styled.p`
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   margin-bottom: 1.5rem;
 `;
 
@@ -17,28 +17,27 @@ export const P = ({ children }) => <StyledP>{children}</StyledP>;
 
 //Headings styles
 
-const StyledH1 = styled.h1``;
-
 const StyledH2 = styled.h2`
+  font-size: 1.9rem;
   margin-top: 3.5rem;
   margin-bottom: 1.5rem;
-  color: var(--color-main);
+  color: ${(props) => props.theme.colorBrand};
 `;
 
 const StyledH3 = styled.h3`
+  font-size: 1.5rem;
   margin-top: 3rem;
   margin-bottom: 1rem;
 `;
 
-export const H1 = ({ children }) => <StyledH1>{children}</StyledH1>;
 export const H2 = ({ children }) => <StyledH2>{children}</StyledH2>;
 export const H3 = ({ children }) => <StyledH3>{children}</StyledH3>;
 
 //List styles
 
 const StyledUL = styled.ul`
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
   list-style-type: none;
   padding-left: 1rem;
 `;
@@ -48,11 +47,9 @@ const StyledLI = styled.li`
 
   &::before {
     content: "◉";
-    color: var(--color-main);
-    font-weight; bold;
+    color: ${(props) => props.theme.colorBrand};
     display: inline-block;
-    width: 1.125rem;
-    margin-left: -1rem;
+    padding-right: 0.8rem;
   }
 `;
 
@@ -62,36 +59,52 @@ export const LI = ({ children }) => <StyledLI>{children}</StyledLI>;
 //Link styles
 
 const StyledA = styled.a`
-  color: var(--color-main);
+  color: ${(props) => props.theme.colorBrand};
+  outline: none;
+  text-decoration: none;
+  transition: border 100ms ease-in;
   cursor: pointer;
 
-  &:visited {
-    color: ${(props) => props.theme.fontColor};
+  &:hover {
+    text-decoration: 2px underline solid;
+    text-decoration-color: ${(props) => props.theme.colorBrand};
   }
 
-  &:hover {
-    border-bottom: 3px solid var(--color-main);
+  &:focus {
+    outline: 2px solid;
+    border-radius: 2px;  
+    outline-color: ${(props) => props.theme.colorBrand};
+  }
+
+  &:active {
+    background-color: ${(props) => props.theme.colorBrand};
+    color: ${(props) => props.theme.fontColor};
   }
 `;
 
-export const A = ({ children }) => <StyledA>{children}</StyledA>
+export const A = ({ children, href, title }) => <StyledA href={href} title={title}>{children}</StyledA>;
 
 //Block quote styles
 
 const StyledBlockQuote = styled.blockquote`
-  background-color: var(--color-background-gray);
+  background-color: ${(props) => props.theme.colorBrandLight};
   border-radius: 0px 10px 10px 0px;
-  border-left: 3px solid var(--color-main);
+  border-left: 4px solid;
+  border-left-color: ${(props) => props.theme.colorBrand};
   margin-top: 1rem;
   margin-bottom: 1rem;
-  padding: 2rem 1rem;
+  padding: 2rem;
+
+  p {
+    margin-bottom: 0rem;
+  }
 `;
 
 export const BlockQuote = ({ children }) => (
   <StyledBlockQuote>{children}</StyledBlockQuote>
 );
 
-//Code and inline-code styles
+//Code and Inline-Code styles
 
 const StyledCode = styled.code`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -118,14 +131,10 @@ const StyledPre = styled.pre`
 const Tag = styled.span`
   position: absolute;
   right: 1rem;
-  top: 0.125rem;
+  top: 0.5rem;
   color: ${(props) => props.theme.fontColorSecondary};
   opacity: 0.25;
   user-select: none;
-
-  @media(min-width: 35em) {
-    right: 2rem;
-  }
 `;
 
 export const CodeBlock = ({ children, className }) => {

@@ -11,7 +11,7 @@ const IndexPage = ({ data }) => {
         {data.allMdx.nodes.map((item) => (
           <PostPreview
             title={item.frontmatter.title}
-            description={item.frontmatter.date}
+            description={item.frontmatter.description}
             to={`/blog/${item.slug}`}
           />
         ))}
@@ -25,8 +25,8 @@ export const data = graphql`
     allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       nodes {
         frontmatter {
-          date
           title
+          description
         }
         id
         slug
