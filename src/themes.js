@@ -4,6 +4,7 @@ export const lightTheme = {
   fontColorSecondary: "var(--color-text-medium)",
   backgroundTransparent: "var(--color-background-transparent)",
   backgroundSecondary: "var(--color-background-secondary)",
+  codeHighlight: "var(--color-background-light)",
   colorBrand: "var(--color-main)",
   colorBrandLight: "var(--color-main-light)"
 }
@@ -14,6 +15,7 @@ export const darkTheme = {
   fontColorSecondary: "var(--color-text-white-medium)",
   backgroundTransparent: "var(--color-background-dark-transparent)",
   backgroundSecondary: "var(--color-background-dark-secondary)",
+  codeHighlight: "var(--color-background-dark-light)",
   colorBrand: "var(--color-main-dark)",
   colorBrandLight: "var(--color-main-light-dark)"
 }

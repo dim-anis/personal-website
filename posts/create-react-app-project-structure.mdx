@@ -7,8 +7,6 @@ tags: ["javascript", "React", "software architecture"]
 publish: boolean
 ---
 
-import { Link } from "../src/components/mdxLink";
-
 When it comes to starting a new React project the first decision that I'm usually faced with is how do I properly arrange files and folders within it. React, being an unopinionated library, doesn't make it any easier.
 
 Anything goes in the React universe and while I appreciate the freedom I find that it sometimes may lead to analysis paralysis. Then I remember the advice of the React team to just start writing if you find yourself overthinking the structure of your project too much. And so I do, but I never come back to it to clean up the folder structure and the project ends up looking messy and amateurish. 
@@ -62,7 +60,7 @@ npx create-react-app "myProject"
 
 ... and we're faced with something like this (minus the fluff and other root level folders that aren't necessary for this discussion):
 
-```text
+```text {2}
 .
 ├── public
 │   ├── favicon.ico

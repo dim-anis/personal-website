@@ -1,15 +1,30 @@
 import * as React from "react";
-import Layout from "../../components/layout";
+
+import styled from "styled-components";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { MDXProvider } from "@mdx-js/react";
-import styled from "styled-components";
+
+import Layout from "../../components/layout";
 import ArticleHero from "../../components/articleHero";
-
 import { SEO } from "../../components/SEO";
+import { P, H2, H3, BlockQuote, InlineCode, UL, LI, A } from "../../components/mdxComponents/mdxComponents";
+import CodeBlock from "../../components/mdxComponents/CodeBlock";
 
-import { P, H2, H3, CodeBlock, BlockQuote, InlineCode, UL, LI, A } from "../../components/mdxComponents";
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+
+const Wrapper = styled.div`
+  background-color: ${(props) => props.theme.colorBackground};
+  overflow: auto;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+
+  pre[class*='language-'] {
+    background-color: transparent;
+    float: left;
+    min-width: 100%;
+  }
+`;
 
 const components = {
   p: P,
@@ -19,7 +34,7 @@ const components = {
   li: LI,
   a: A,
   blockquote: BlockQuote,
-  pre: (props) => <div {...props} />,
+  pre: (props) => <Wrapper {...props} />,
   code: CodeBlock,
   "p.inlineCode": InlineCode,
 };
