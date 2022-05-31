@@ -10,7 +10,7 @@ import { useDarkMode } from "./src/hooks/useDarkMode";
 const App = ({element}) => {
 
   //checking if the user agent has a theme preference
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark').matches;
+  const prefersDark = window.matchMedia('prefers-color-scheme: dark').matches;
   const [isDark, setIsDark] = useDarkMode("dark", prefersDark);
 
   const toggleTheme = () => {

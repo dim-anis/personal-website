@@ -53,44 +53,44 @@ const linesToHighlight = (meta) => {
 const CodeBlock = ({ children, className, metastring }) => {
   const language = className.replace(/language-/, "") || "";
   const toHighlight = linesToHighlight(metastring);
+
+  const theme = React.useContext(UserContext);
   
   return (
-    <UserContext.Consumer>
-      {(context) => (
-        <Highlight
-          {...defaultProps}
-          code={children.trim()}
-          language={language}
-          theme={context.isDark ? darkTheme : lightTheme}
-        >
-          {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <StyledPre className={className} style={style}>
-              <Tag>{language}</Tag>
-              {tokens.map((line, index) => {
-                const lineProps = getLineProps({ line, key: index });
-                if (toHighlight(index)) {
-                  return (
-                    <StyledDIV key={index} {...lineProps} highlighted>
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
-                    </StyledDIV>
-                  );
-                } else {
-                  return (
-                    <StyledDIV key={index} {...lineProps}>
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({ token, key })} />
-                      ))}
-                    </StyledDIV>
-                  );
-                }  
-              })}
-            </StyledPre>
-          )}
-        </Highlight>
-      )}
-    </UserContext.Consumer>
+    <UserContext.Provider value={{theme}}>
+      <Highlight
+        {...defaultProps}
+        code={children.trim()}
+        language={language}
+        theme={theme.isDark ? darkTheme : lightTheme}s
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <StyledPre className={className} style={style}>
+            <Tag>{language}</Tag>
+            {tokens.map((line, index) => {
+              const lineProps = getLineProps({ line, key: index });
+              if (toHighlight(index)) {
+                return (
+                  <StyledDIV key={index} {...lineProps} highlighted>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </StyledDIV>
+                );
+              } else {
+                return (
+                  <StyledDIV key={index} {...lineProps}>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </StyledDIV>
+                );
+              }  
+            })}
+          </StyledPre>
+        )}
+      </Highlight>
+    </UserContext.Provider>
   );
 };
 
