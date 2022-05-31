@@ -1,6 +1,6 @@
 const siteMetadata = {
   title: "Dmitry Anisov Blog",
-  description: "Just trying to make the WEB a better and sharing what I'm learning while doing that.",
+  description: "Trying to make the WEB a better place and sharing what I'm learning while doing that.",
   image: "",
   siteUrl: "https://www.dimanis.dev",
   siteLanguage: "en-US",

@@ -4,10 +4,10 @@ import { Helmet } from "react-helmet"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 export const SEO = ({ description, lang, meta, title, image, url, type }) => {
-  const siteMetadata = useSiteMetadata();
+  const defaults = useSiteMetadata();
 
-  const metaDescription = description || siteMetadata.description
-  const defaultTitle = siteMetadata?.title
+  const metaDescription = description || defaults.description
+  const defaultTitle = defaults?.title
 
   return (
     <Helmet
@@ -16,6 +16,12 @@ export const SEO = ({ description, lang, meta, title, image, url, type }) => {
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      link={[
+        { rel: `icon`, content: `./static/favicon.ico`, sizes: `any` },
+        { rel: `icon`, content: `./static/icon.svg`, type: `image/svg+xml` },
+        { rel: `apple-touch-icon`, content: `./static/apple-touch-icon.png` },
+        { rel: `manifest`, content: `./static/manifest.webmanifest` }
+      ]}
       meta={[
         {
           name: `description`,
@@ -51,7 +57,7 @@ export const SEO = ({ description, lang, meta, title, image, url, type }) => {
         },
         {
           name: `twitter:creator`,
-          content: siteMetadata?.social?.twitter || ``,
+          content: defaults?.social?.twitter || ``,
         },
         {
           name: `twitter:title`,

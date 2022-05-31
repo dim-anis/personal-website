@@ -7,7 +7,7 @@ const StyledListItem = styled.li`
   transition: color 200ms ease-in-out;
 
   &:hover {
-    color: var(--color-main);
+    color: ${(props) => props.theme.colorBrand};
   }
 `;
 

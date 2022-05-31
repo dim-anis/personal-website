@@ -17,6 +17,10 @@ const Container = styled.div`
 const StyledH1 = styled.h1`
     font-size: 2.3rem;
 		text-align: center;
+
+    @media(max-width: 564px) {
+      text-align: left;
+    }
 `;
 
 const StyledH2 = styled.h2`
@@ -35,7 +39,7 @@ const TagContainer = styled.div`
     gap: 1rem;
 `;
 
-const ArticleHero = ({ title, subtitle, tags, slug }) => {
+const ArticleHero = ({ title, subtitle, tags }) => {
 	return (
 		<Container>
 			<TagContainer>
