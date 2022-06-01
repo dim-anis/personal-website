@@ -8,6 +8,7 @@ const StyledListItem = styled.li`
 
   &:hover {
     color: ${(props) => props.theme.colorBrand};
+    text-decoration: 2px underline solid;
   }
 `;
 

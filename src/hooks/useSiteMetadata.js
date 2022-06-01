@@ -5,6 +5,7 @@ export const useSiteMetadata = () => {
     graphql`
       query SITE_METADATA_QUERY {
         site {
+          buildTime(formatString: "YYYY-MM-DD")
           siteMetadata {
             description
             title

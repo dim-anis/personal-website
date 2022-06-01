@@ -43,7 +43,7 @@ const ArticleHero = ({ title, subtitle, tags }) => {
 	return (
 		<Container>
 			<TagContainer>
-				{tags.map((tag) => <Tag>{tag}</Tag>)}
+				{tags.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
 			</TagContainer>
 			<StyledH1>{title}</StyledH1>
 			<StyledH2>{subtitle}</StyledH2>

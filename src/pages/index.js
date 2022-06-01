@@ -10,6 +10,7 @@ const IndexPage = ({ data }) => {
       <Main title="Latest">
         {data.allMdx.nodes.map((item) => (
           <PostPreview
+            key={item.id}
             title={item.frontmatter.title}
             description={item.frontmatter.description}
             to={`/blog/${item.slug}`}
@@ -22,7 +23,7 @@ const IndexPage = ({ data }) => {
 
 export const data = graphql`
   query {
-    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
+    allMdx(sort: {fields: frontmatter___datePublished, order: DESC}) {
       nodes {
         frontmatter {
           title
