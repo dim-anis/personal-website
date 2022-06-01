@@ -7,7 +7,7 @@ import { MDXProvider } from "@mdx-js/react";
 
 import Layout from "../../components/layout";
 import ArticleHero from "../../components/articleHero";
-import { SEO } from "../../components/SEO";
+import { SEO } from "../../components/SEO/SEO";
 import { P, H2, H3, BlockQuote, InlineCode, UL, LI, A } from "../../components/mdxComponents/mdxComponents";
 import CodeBlock from "../../components/mdxComponents/CodeBlock";
 
@@ -61,7 +61,10 @@ const BlogPost = ({ data, location }) => {
         description={data.mdx.frontmatter.description}
         title={data.mdx.frontmatter.title} 
         url={`${siteUrl}${path}`} 
-        type={"article"}
+        article={true}
+        datePublished={data.mdx.frontmatter.datePublished}
+        dateModified={data.mdx.frontmatter.datePublished}
+        //image={}
       />
       <Main>
         <ArticleHero
@@ -81,7 +84,7 @@ export const query = graphql`
   query MyQuery($id: String) {
     mdx(id: { eq: $id }) {
       frontmatter {
-        date
+        datePublished
         description
         title
         subtitle

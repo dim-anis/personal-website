@@ -1,5 +1,5 @@
 ---
-date: "2022-22-05"
+datePublished: "2022-22-05"
 title: "How to Structure Your React Project"
 subtitle: "Moving Files Around Until It Feels Right"
 description: "Trying to find an answer to an age old question..."
@@ -60,7 +60,7 @@ npx create-react-app "myProject"
 
 ... and we're faced with something like this (minus the fluff and other root level folders that aren't necessary for this discussion):
 
-```text {2}
+```text {5-9}
 .
 ├── public
 │   ├── favicon.ico
@@ -82,26 +82,25 @@ As far as components go so far we only have one called `<App />`. While it's pos
 
 As our project grows in size and we start adding other components as well as styles and tests for them our `src` folder grows and it starts looking a little messy - it's very hard to scan  such a long  list of files. 
 
-```text
+```text {6-14}
 .
 ├── public
 │   ├── favicon.ico
 │   └── index.html
 └── src
-	├── components
-	├── Button.js
-	├── Button.styles.js
-	├──	Button.test.js
-	├── Select.js
-	├── Select.styles.js
-	├── Select.test.js
-	├── List.js 
-	├── List.styles.js
-	├── List.test.js  
-	├── App.css    
-	├── App.js
-	├── index.css
-	└── index.js
+    ├── Button.js
+    ├── Button.styles.js
+    ├──	Button.test.js
+    ├── Select.js
+    ├── Select.styles.js
+    ├── Select.test.js
+    ├── List.js 
+    ├── List.styles.js
+    ├── List.test.js  
+    ├── App.css    
+    ├── App.js
+    ├── index.css
+    └── index.js
 ```
 
 At this stage it makes sense to create folders for each component and it's associated files such as styles and tests to keep everything more neat and easily accessible.  My weapon of choice when it comes to styling is a CSS-in-JS library called `styled-components` and to be honest I usually just place styles right inside of the component file itself, but here they're placed in the same folder next to the component. Ultimately the choice is yours.
@@ -112,7 +111,7 @@ It is also a common practice to put all of the components in a separate `compone
 
 We may add other folders to `src`  such as `contexts`, `utils` with helper functions, `assets` with images and icons and  so on. We might even put on our big-boy and big-girl pants and write our very own hooks!
 
-```text
+```text {7-25,27-29}
 .
 ├── public
 │   ├── favicon.ico
@@ -146,6 +145,8 @@ We may add other folders to `src`  such as `contexts`, `utils` with helper funct
 
 Now this definitely looks a lot better and this **grouping by file type** approach may work very well for a small to medium sized project. 
 
+_From here on we'll focus on the `src` folder since that's where all the action happens._
+
 ### Further separating concerns
 
 If your app is going to have multiple pages you might want to introduce a special folder for them often called `pages` or `views`. You could keep your `pages` components in the `components` folder since essentially they're just components within components, but the difference is that `pages` aren't likely to be reused all over the app like buttons for example. Therefore it may be a good idea to separate concerns and place `pages` in a dedicated folder outside of `components`. This kind of structure also leaves no doubts about what kind of pages our app consists of.
@@ -154,7 +155,7 @@ If by now you have built some page-specific child components - the ones that are
 
 Following the same logic we could also move some of our component-specific hooks, helpers and other types of files next to the components where they are used.  This approach of  **storing files together if they are used together** becomes even more advantageous as our project grows in size.
 
-```text
+```text {24-39}
 .
 └── src
     ├── App.js
@@ -199,7 +200,7 @@ Following the same logic we could also move some of our component-specific hooks
         └── helpers.js
 ```
 
-Inevitably there will be some generalized hooks and helpers but that's alright. Keeping the files that are reusable across the app in their own dedicated folders and keeping component-specific files next to the components still makes intuitive sense.
+Inevitably there will be some generalized hooks and helpers that will not fit any `page` or `component` folders but that's alright. Keeping the files that are reusable across the app in their own dedicated folders and keeping component-specific files next to the components in which they're used still makes intuitive sense.
 
 ### Where to go from here?
 
@@ -211,8 +212,12 @@ If you'd like to learn more about the feature-driven structure and why you may w
 
 ## General Guidelines
 
-- avoid **unnecessarily deep** nesting
-- separate concerns
+To reiterate - I'm not saying that this is **the way** to organize all of your React projects going forward. Rather it's just a way that has some convincing (hopefully) rationale behind it. Staying flexible and not being afraid to deviate from even the most popular approaches depending on your own specific needs is important. Not spending too much time pondering on what a perfect project structure is and actually writing code is also important. 
+
+That said, there are some general principles we can distill from everything written above that can be useful when coming up with your own approach:
+
+- avoid **unnecessarily deep** nesting (arguably I didn't do the best job here, but it's not too bad, key word being **"unnecessarily"**)
+- keep related files together
 - keep files that change together close to each other
 - don't overthink it
 

@@ -3,7 +3,7 @@ import * as React from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
-import { SEO } from "./SEO";
+import { SEO } from "./SEO/SEO";
 
 const Layout = ({ children, pageTitle }) => {
 
