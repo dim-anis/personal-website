@@ -35,7 +35,6 @@ export const SEO = (
           { rel: `apple-touch-icon`, content: `./static/apple-touch-icon.png` },
           { rel: `manifest`, content: `./static/manifest.webmanifest` }
         ]}
-        script
         meta={[
           {
             name: `description`,
@@ -93,8 +92,8 @@ export const SEO = (
       />
     <SchemaOrg 
       article={article} 
-      published={datePublished} 
-      modified={dateModified} 
+      datePublished={datePublished} 
+      dateModified={dateModified} 
       url={url} 
       description={description} 
       title={title} 

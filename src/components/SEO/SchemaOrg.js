@@ -63,11 +63,7 @@ const SchemaOrg = ({ article, datePublished, dateModified, url, description, tit
 
   return (
     <Helmet>
-      {
-        article 
-        ? <script type="application/ld+json">{JSON.stringify(schemaBlogPosting)}</script>
-        : <script type="application/ld+json">{JSON.stringify(schemaWebPage)}</script>
-      }
+      <script type="application/ld+json">{JSON.stringify(article ? schemaBlogPosting : schemaWebPage)}</script>
     </Helmet>
   )
 }

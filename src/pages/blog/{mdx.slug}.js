@@ -7,7 +7,6 @@ import { MDXProvider } from "@mdx-js/react";
 
 import Layout from "../../components/layout";
 import ArticleHero from "../../components/articleHero";
-import { SEO } from "../../components/SEO/SEO";
 import { P, H2, H3, BlockQuote, InlineCode, UL, LI, A } from "../../components/mdxComponents/mdxComponents";
 import CodeBlock from "../../components/mdxComponents/CodeBlock";
 
@@ -47,25 +46,20 @@ const Main = styled.main`
 `;
 
 const BlogPost = ({ data, location }) => {
-  const { 
-    siteUrl
-  } = useSiteMetadata();
+  const defaults = useSiteMetadata();
   
   const path = location.href ? location.pathname : "";
 
   return (
     <Layout
       pageTitle={data.mdx.frontmatter.title}
+      description={data.mdx.frontmatter.description}
+      url={`${defaults.siteUrl}${path}`} 
+      article={true}
+      datePublished={data.mdx.frontmatter.datePublished}
+      dateModified={data.mdx.frontmatter.dateModified}
+      //image={}
     >
-      <SEO 
-        description={data.mdx.frontmatter.description}
-        title={data.mdx.frontmatter.title} 
-        url={`${siteUrl}${path}`} 
-        article={true}
-        datePublished={data.mdx.frontmatter.datePublished}
-        dateModified={data.mdx.frontmatter.datePublished}
-        //image={}
-      />
       <Main>
         <ArticleHero
           title={data.mdx.frontmatter.title}
@@ -85,6 +79,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         datePublished
+        dateModified
         description
         title
         subtitle
