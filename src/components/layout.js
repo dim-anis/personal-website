@@ -5,27 +5,31 @@ import Footer from "./footer";
 import { useSiteMetadata } from "../hooks/useSiteMetadata";
 import { SEO } from "./SEO/SEO";
 
-const Layout = ({ children, pageTitle }) => {
+const Layout = ({ 
+  children, 
+  pageTitle, 
+  article, 
+  description, 
+  url, 
+  datePublished, 
+  dateModified, 
+  image }) => {
 
-  const {
-    description,
-    image,
-    siteUrl,
-    siteLanguage,
-    siteLocale,
-    twitterUsername,
-  } = useSiteMetadata();
-
+  const defaults = useSiteMetadata();
+  
   return (
     <>
       <SEO 
         title={pageTitle}
-        description={description || null}
-        image={image || null}
-        pathname={siteUrl}
-        siteLanguage={siteLanguage}
-        siteLocale={siteLocale}
-        twitterUsername={twitterUsername}
+        description={description || defaults.description}
+        image={image || defaults.image || null}
+        url={url ? url : defaults.siteUrl}
+        siteLanguage={defaults.siteLanguage}
+        siteLocale={defaults.siteLocale}
+        twitterUsername={defaults.twitterUsername}
+        article={article ? true : false}
+        datePublished={datePublished}
+        dateModified={dateModified}
       />
       <Header /> 
       {children}
