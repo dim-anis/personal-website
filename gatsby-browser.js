@@ -1,38 +1,20 @@
 import * as React from "react";
+import { ThemeProvider } from "./src/contexts/ThemeContext";
+import { GlobalStyle } from "./src/GlobalStyle"
 
-import { GlobalStyle } from "./src/GlobalStyle";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "./src/themes";
-
-import { UserContext } from "./src/contexts/UserContext";
-import { useDarkMode } from "./src/hooks/useDarkMode";
- 
-const App = ({element}) => {
-
-  //checking if the user agent has a theme preference
-  const prefersDark = window.matchMedia('prefers-color-scheme: dark').matches;
-  const [isDark, setIsDark] = useDarkMode("dark", prefersDark);
-
-  const toggleTheme = () => {
-    isDark ? setIsDark(false) : setIsDark(true);
-  }
-
+export const wrapPageElement = ({ element }) => {
   return (
-    <UserContext.Provider value={{
-      isDark,
-      toggleTheme
-    }}>
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <GlobalStyle />
-        {element}
-      </ThemeProvider>
-		</UserContext.Provider>
+    <>
+      <GlobalStyle />
+      {element}
+    </>
   )
 }
 
 export const wrapRootElement = ({ element }) => {
-
   return (
-    <App element={element} />
-	);
-};
+    <ThemeProvider>
+      {element}
+    </ThemeProvider>
+  ) 
+}

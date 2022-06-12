@@ -1,33 +1,35 @@
 import { createGlobalStyle } from "styled-components";
 
+import SpaceGrotesk from "../static/fonts/SpaceGrotesk.woff2";
+import FiraCode from "../static/fonts/FiraCode-VF.woff2";
+
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --color-background: hsl(0, 0%, 95%);
-    --color-background-transparent: hsl(0 0% 95% / 0.85);
-    --color-background-secondary: hsl(0, 0%, 100%);
-    --color-background-light: hsl(0, 0%, 90%);
-
-    --color-background-dark: hsl(222, 22%, 10%);
-    --color-background-dark-transparent: hsl(222 22% 10% / 0.85);
-    --color-background-dark-secondary: hsl(222, 22%, 15%);
-    --color-background-dark-light: hsl(222, 22%, 25%);
-
-    --color-text: hsl(222, 22%, 13%); //Jet (hsl 222, 22%, 5%)
-    --color-text-medium: hsl(222, 22%, 40%);
-    --color-text-low: hsl(222, 22%, 62%);
-    --color-text-white: hsl(0, 0%, 87%); //
-    --color-text-white-medium: hsl(0, 0%, 60%);
-    --color-text-white-low: hsl(0, 0%, 38%);
-    --color-text-gray: hsl(222, 22%, 60%);
-
-    --color-main: hsl(212, 93%, 49%); //Blue Gray
-    --color-main-light: hsl(212, 93%, 95%);
-    --color-main-light-dark: hsl(212, 35%, 20%);
-    --color-main-dark: hsl(212, 85%, 70%);
-    --color-secondary: hsl(212, 46%, 85%);
-
     --font-code: 'Fira Code', monospace;
   }
+
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url(${SpaceGrotesk}) format('woff2');
+    font-weight: 400 600 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Fira Code';
+    src: url(${FiraCode}) format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+  }
+  
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -39,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background-color: var(--color-background-gray);
+    background-color: var(--color-primaryDimmed);
     border-radius: 100px;
   }
   ::-webkit-scrollbar-thumb {
@@ -47,7 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 100px;
   }
   html {
-    scrollbar-color: var(--color-background-gray);
+    scrollbar-color: var(--color-primaryDimmed);
     scrollbar-width: thin;
   }
 
@@ -60,8 +62,8 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     margin: 0 auto;
     font-family: 'Space Grotesk', sans-serif;
-    color: ${props => props.theme.fontColor};
-    background: ${props => props.theme.body};
+    color: var(--color-text);
+    background: var(--color-background);
   }
 
   img, picture, video, canvas, svg {

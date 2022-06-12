@@ -16,21 +16,15 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
+    "gatsby-transformer-remark",
     {
-      resolve: `gatsby-plugin-webfonts`,
+      resolve: 'gatsby-plugin-netlify',
       options: {
-        fonts: {
-          google: [
-            {
-              family: "Space Grotesk",
-              variants: ["300", "400", "500", "600", "700", "800", "900"],
-              fontDisplay: 'swap',
-            },
-            {
-              family: "Fira Code",
-              variants: ["400"],
-              fontDisplay: 'swap',
-            }
+        headers: {
+          '/fonts/*': [
+            'Cache-Control: public',
+            'Cache-Control: max-age=365000000',
+            'Cache-Control: immutable',
           ],
         },
       },
@@ -49,12 +43,6 @@ module.exports = {
         name: `posts`,
         path:`${__dirname}/posts`,
       }
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [],
-      },
     },
     {
       resolve: `gatsby-plugin-react-svg`,

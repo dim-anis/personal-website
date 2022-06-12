@@ -30,13 +30,13 @@ const StyledLink = styled.a`
   cursor: pointer;
   border-radius: 10px;
   padding: 1rem;
-  background-color: ${props => props.theme.backgroundSecondary};
+  background-color: var(--color-backgroundDimmed);
   border: 1px solid transparent;
   transition: border 250ms ease-in-out;
 
   &:hover {
     border: 1px solid;
-    border-color: ${(props) => props.theme.colorBrand};
+    border-color: var(--color-primary);
   }
   @media(min-width: 895px) {
     padding: 1.5rem;
@@ -55,13 +55,13 @@ const StyledGatsbyLink = styled((props) => <Link {...props} />)`
   cursor: pointer;
   border-radius: 10px;
   padding: 1rem;
-  background-color: ${props => props.theme.backgroundSecondary};
+  background-color: var(--color-backgroundDimmed);
   border: 1px solid transparent;
   transition: border 250ms ease-in-out;
 
   &:hover {
     border: 1px solid;
-    border-color: ${(props) => props.theme.colorBrand};
+    border-color: var(--color-primary);
   }
   @media(min-width: 895px) {
     padding: 1.5rem;

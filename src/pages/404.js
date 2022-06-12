@@ -4,9 +4,10 @@ import { Link } from "gatsby";
 
 const StyledLink = styled((props) => <Link {...props} />)`
   text-decoration: none;
-  color: var(--color-text);
+  color: color: ${props => props.theme.fontColor};
   font-weight: 600;
-  border: 1px solid var(--color-text);
+  border: 1px solid;
+  border-color: color: ${props => props.theme.fontColor};
   padding: .5rem;
   transition: all 350ms ease-out;
 

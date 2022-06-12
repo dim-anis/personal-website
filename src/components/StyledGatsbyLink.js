@@ -8,7 +8,7 @@ const StyledLink = styled((props) => <Link {...props} />)`
   font-weight: 600;
   cursor: pointer;
   &:hover {
-    color: var(--color-main);
+    color: var(--color-textLight);
   }
 `;
 

@@ -17,7 +17,7 @@ const StyledH2 = styled.h2`
   font-size: 1.9rem;
   margin-top: 3.5rem;
   margin-bottom: 1.5rem;
-  color: ${(props) => props.theme.colorBrand};
+  color: var(--color-primary);
 `;
 
 const StyledH3 = styled.h3`
@@ -43,7 +43,7 @@ const StyledLI = styled.li`
 
   &::before {
     content: "◉";
-    color: ${(props) => props.theme.colorBrand};
+    color: var(--color-primary);
     display: inline-block;
     padding-right: 0.8rem;
   }
@@ -55,7 +55,7 @@ export const LI = ({ children }) => <StyledLI>{children}</StyledLI>;
 //Link styles
 
 const StyledA = styled.a`
-  color: ${(props) => props.theme.colorBrand};
+  color: var(--color-primary);
   outline: none;
   text-decoration: none;
   transition: border 100ms ease-in;
@@ -63,18 +63,18 @@ const StyledA = styled.a`
 
   &:hover {
     text-decoration: 2px underline solid;
-    text-decoration-color: ${(props) => props.theme.colorBrand};
+    text-decoration-color: var(--color-primary);
   }
 
   &:focus {
     outline: 2px solid;
     border-radius: 2px;  
-    outline-color: ${(props) => props.theme.colorBrand};
+    outline-color: var(--color-primary);
   }
 
   &:active {
-    background-color: ${(props) => props.theme.colorBrand};
-    color: ${(props) => props.theme.fontColor};
+    background-color: var(--color-primary);
+    color: var(--color-text);
   }
 `;
 
@@ -83,10 +83,10 @@ export const A = ({ children, href, title }) => <StyledA href={href} title={titl
 //Block quote styles
 
 const StyledBlockQuote = styled.blockquote`
-  background-color: ${(props) => props.theme.colorBrandLight};
+  background-color: var(--color-primaryDimmed);
   border-radius: 0px 10px 10px 0px;
   border-left: 4px solid;
-  border-left-color: ${(props) => props.theme.colorBrand};
+  border-left-color: var(--color-primary);
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 2rem;
@@ -103,8 +103,9 @@ export const BlockQuote = ({ children }) => (
 //Inline-Code styles
 
 const StyledCode = styled.code`
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: var(--color-backgroundDimmed);
   border-radius: 5px;
+  padding: 0 0.25rem;
   font-family: var(--font-code);
 `;
 

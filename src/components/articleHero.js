@@ -24,13 +24,13 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledH2 = styled.h2`
-    color: var(--color-text-gray);
+    color: var(--color-textDimmed);
     margin-top: 1rem;
     font-weight: 400;
 `;
 
 const Tag = styled.div`
-    color: ${(props) => props.theme.colorBrand};
+    color: var(--color-primary);
     margin-bottom: 1rem;
 `;
 
