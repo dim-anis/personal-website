@@ -31,7 +31,7 @@ const Layout = ({
         datePublished={datePublished}
         dateModified={dateModified}
       />
-      <Header /> 
+      <Header pageTitle={pageTitle} /> 
       {children}
       <Footer />
     </>

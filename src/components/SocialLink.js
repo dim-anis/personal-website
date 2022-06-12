@@ -2,10 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: 2rem;
-  aspect-ratio: 1;
-  padding: 0.25rem;
   border: none;
+  padding: 0;
   cursor: pointer;
   background: transparent;
   transition: fill 250ms ease-in-out;
@@ -16,12 +14,19 @@ const Button = styled.button`
   }
 `;
 
-const NavButtonItem = ({ icon, handleClick }) => {
-  return (
-    <Button onClick={handleClick}>
-      {icon}
-    </Button>
-  );
-};
+const StyledA = styled.a`
+  width: 2rem;
+  aspect-ratio: 1;
+`;
 
-export default NavButtonItem;
+const SocialLink = ( { icon, to }) => {
+  return (
+    <StyledA href={to}>
+      <Button>
+        {icon}
+      </Button>
+    </StyledA>
+  )
+}
+
+export default SocialLink;

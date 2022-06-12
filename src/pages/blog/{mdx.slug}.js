@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { createGlobalStyle } from "styled-components";
+
 import styled from "styled-components";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
@@ -11,6 +13,12 @@ import { P, H2, H3, BlockQuote, InlineCode, UL, LI, A } from "../../components/m
 import CodeBlock from "../../components/mdxComponents/CodeBlock";
 
 import { useSiteMetadata } from "../../hooks/useSiteMetadata";
+
+const CustomBackground = createGlobalStyle`
+  body {
+    --color-background: var(--color-backgroundBlog);
+  }
+`;
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colorBackground};
@@ -51,6 +59,8 @@ const BlogPost = ({ data, location }) => {
   const path = location.href ? location.pathname : "";
 
   return (
+    <>
+    <CustomBackground />
     <Layout
       pageTitle={data.mdx.frontmatter.title}
       description={data.mdx.frontmatter.description}
@@ -58,7 +68,7 @@ const BlogPost = ({ data, location }) => {
       article={true}
       datePublished={data.mdx.frontmatter.datePublished}
       dateModified={data.mdx.frontmatter.dateModified}
-      //image={}
+      image={`${defaults.siteUrl}/posts/${data.mdx.slug}.png`}
     >
       <Main>
         <ArticleHero
@@ -71,6 +81,7 @@ const BlogPost = ({ data, location }) => {
         </MDXProvider>
       </Main>
     </Layout>
+    </>
   );
 };
 
@@ -87,6 +98,7 @@ export const query = graphql`
       }
       id
       body
+      slug
     }
   }
 `;

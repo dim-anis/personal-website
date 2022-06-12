@@ -6,7 +6,7 @@ import Highlight, { defaultProps } from "prism-react-renderer";
 import darkTheme from "prism-react-renderer/themes/vsDark";
 import lightTheme from "prism-react-renderer/themes/vsLight";
 
-import { UserContext } from "../../contexts/UserContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const StyledPre = styled.pre`
   padding: 1.5rem 1rem;
@@ -23,13 +23,13 @@ const Tag = styled.span`
   position: absolute;
   right: 1rem;
   top: 0.5rem;
-  color: ${(props) => props.theme.fontColorSecondary};
+  color: var(--color-textDimmed);
   opacity: 0.25;
   user-select: none;
 `;
 
 const StyledDIV = styled.div`
-  background-color: ${(props) => props.highlighted ? props.theme.codeHighlight : "transparent"};
+  background-color: ${(props) => props.highlighted ? 'var(--color-backgroundLight)' : 'transparent'};
   display: block;
   margin-left: -0.5rem;
   margin-right: -0.5rem;
@@ -54,43 +54,41 @@ const CodeBlock = ({ children, className, metastring }) => {
   const language = className.replace(/language-/, "") || "";
   const toHighlight = linesToHighlight(metastring);
 
-  const theme = React.useContext(UserContext);
+  const { isDark } = React.useContext(ThemeContext);
   
   return (
-    <UserContext.Provider value={{theme}}>
-      <Highlight
-        {...defaultProps}
-        code={children.trim()}
-        language={language}
-        theme={theme.isDark ? darkTheme : lightTheme}s
-      >
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <StyledPre className={className} style={style}>
-            <Tag>{language}</Tag>
-            {tokens.map((line, index) => {
-              const lineProps = getLineProps({ line, key: index });
-              if (toHighlight(index)) {
-                return (
-                  <StyledDIV key={index} {...lineProps} highlighted>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
-                  </StyledDIV>
-                );
-              } else {
-                return (
-                  <StyledDIV key={index} {...lineProps}>
-                    {line.map((token, key) => (
-                      <span key={key} {...getTokenProps({ token, key })} />
-                    ))}
-                  </StyledDIV>
-                );
-              }  
-            })}
-          </StyledPre>
-        )}
-      </Highlight>
-    </UserContext.Provider>
+    <Highlight
+      {...defaultProps}
+      code={children.trim()}
+      language={language}
+      theme={isDark ? darkTheme : lightTheme}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <StyledPre className={className} style={style}>
+          <Tag>{language}</Tag>
+          {tokens.map((line, index) => {
+            const lineProps = getLineProps({ line, key: index });
+            if (toHighlight(index)) {
+              return (
+                <StyledDIV key={index} {...lineProps} highlighted>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </StyledDIV>
+              );
+            } else {
+              return (
+                <StyledDIV key={index} {...lineProps}>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </StyledDIV>
+              );
+            }  
+          })}
+        </StyledPre>
+      )}
+    </Highlight>
   );
 };
 

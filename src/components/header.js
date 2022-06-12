@@ -3,16 +3,20 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 import SunIcon from "../images/icons/sunny.svg";
+import MoonIcon from "../images/icons/moon.svg";
 import MenuIcon from "../images/icons/menu-outline.svg";
 import CloseIcon from "../images/icons/close-outline.svg";
 import NavButtonItem from "./navButtonItem";
 import ListItem from "./navListItem";
 
+import { ThemeContext } from "../contexts/ThemeContext";
+
 const StyledHeader = styled.header`
 width: 100%;
 margin: 2rem auto;
 max-width: 1100px;
-background: ${props => props.theme.backgroundTransparent};
+background: var(--color-background);
+opacity: 0.85;
 backdrop-filter: blur(0.5rem);
 height: auto;
 position: sticky;
@@ -48,8 +52,8 @@ gap: 1rem;
 
 const StyledLogoLink = styled((props) => <Link {...props} />)`
 text-decoration: none;
-color: ${props => props.theme.fontColor};
-font-weight: 800;
+color: var(--color-text);
+font-weight: 700;
 font-size: 1.5rem;
 padding: 0;
 `;
@@ -68,8 +72,8 @@ flex-grow: 1;
   align-items: flex-start;
   justify-content: flex-start;
   inset: 0 0 0 35%;
-  background: ${props => props.theme.backgroundTransparent};
-  color: ${props => props.theme.menuColor};
+  background: var(--color-background);
+  color: var(--color-text);
   padding: min(30vh, 10rem) 2em;
   gap: 5rem;
   transform: ${props => props.open ? "translateX(0%)" : "translateX(100%)"};
@@ -84,7 +88,7 @@ const LogoContainer = styled.div`
 `;
 
 const Dot = styled.em`
-color: ${(props) => props.theme.colorBrand};
+color: var(--color-primary);
 font-size: 2rem;
 font-style: normal;
 `;
@@ -101,10 +105,10 @@ const NavToggle = styled.button`
   background: transparent;
   display: none;
   cursor: pointer;
-  color: ${props => props.theme.fontColorSecondary};
+  color: var(--color-text);
 
   &:hover {
-    color: ${props => props.theme.fontColor};
+    color: var(--color-text);
   }
 
   @media(max-width: 35em) {
@@ -112,10 +116,11 @@ const NavToggle = styled.button`
   }
 `;
 
-const Header = () => {
+const Header = ({ pageTitle }) => {
 
-  const [open, setOpen] = React.useState(false);
-
+  const [open, setOpen] = React.useState(undefined);
+  const { isDark, toggleTheme } = React.useContext(ThemeContext);
+  
   return (
     <StyledHeader>
       <NavContainer>
@@ -130,12 +135,16 @@ const Header = () => {
         <NavRight open={open}>
           <nav>
             <NavList>
-              <ListItem to="/" name="Latest" />
-              <ListItem to="/blog" name="Blog" />
-              <ListItem to="/projects" name="Projects" />
+              <ListItem to="/" name="Latest" highlight={pageTitle.toLowerCase() === "latest" ? true : false} />
+              <ListItem to="/blog" name="Blog" highlight={pageTitle.toLowerCase() ===  "blog" ? true : false} />
+              <ListItem to="/projects" name="Projects" highlight={pageTitle.toLowerCase() === "projects" ? true : false} />
             </NavList>
           </nav>
-          <NavButtonItem icon={<SunIcon />} alt="theme toggle" />
+          {isDark !== "undefined" &&
+            <NavButtonItem 
+            icon={ isDark ? <SunIcon /> : <MoonIcon /> } 
+            handleClick={ () => toggleTheme() } />
+          }
         </NavRight>
       </NavContainer>
     </StyledHeader>
