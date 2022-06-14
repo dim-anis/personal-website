@@ -1,8 +1,8 @@
 const siteMetadata = {
   title: "Dmitry Anisov Blog",
   description: "Trying to make the WEB a better place and sharing what I'm learning while doing that.",
-  image: "",
-  siteUrl: "https://www.dimanis.dev",
+  image: "./static/og-image.png",
+  siteUrl: "http://localhost:9000",
   siteLanguage: "en-US",
   siteLocale: "en_us",
   social: {
@@ -17,6 +17,15 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
     "gatsby-transformer-remark",
+    "gatsby-plugin-advanced-sitemap",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: 'http://localhost:9000',
+        sitemap: 'http://localhost:9000/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/'}]
+      }
+    },
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
@@ -52,5 +61,24 @@ module.exports = {
         }
       }
     },
+    
+    // {
+    //   resolve: `gatsby-plugin-sitemap`,
+    //   options: {
+    //     query: `
+    //     {
+    //       allSitePage {
+    //         nodes {
+    //           path
+    //         }
+    //       }
+    //     }
+    //     `,
+    //     resolveSiteUrl: () => siteMetadata.siteUrl,
+    //     resolvePages: ({
+    //       allSitePage: { nodes: allPages }
+    //     })
+    //   }
+    // }
   ],
 };

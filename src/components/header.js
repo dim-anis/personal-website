@@ -16,7 +16,7 @@ width: 100%;
 margin: 2rem auto;
 max-width: 1100px;
 background: var(--color-background);
-opacity: 0.85;
+opacity: 0.9;
 backdrop-filter: blur(0.5rem);
 height: auto;
 position: sticky;
@@ -73,12 +73,10 @@ flex-grow: 1;
   justify-content: flex-start;
   inset: 0 0 0 35%;
   background: var(--color-background);
-  color: var(--color-text);
   padding: min(30vh, 10rem) 2em;
   gap: 5rem;
   transform: ${props => props.open ? "translateX(0%)" : "translateX(100%)"};
-  will-change: transform;
-  transition: transform 350ms ease-out; //${props => props.open ? "transform 350ms ease-out" : "none"};
+  transition: ${props => props.open ? "transform 350ms ease-out" : "transform 350ms ease-in"};
 }
 `;
 

@@ -54,7 +54,7 @@ export const SEO = (
           },
           {
             property: `og:image`,
-            content: image
+            content: image || defaults.image,
           },
           {
             property: `og:image:alt`,

@@ -4,16 +4,18 @@ import { Link } from "gatsby";
 
 const StyledLink = styled((props) => <Link {...props} />)`
   text-decoration: none;
-  color: color: ${props => props.theme.fontColor};
+  color: var(--color-text);
   font-weight: 600;
-  border: 1px solid;
-  border-color: color: ${props => props.theme.fontColor};
-  padding: .5rem;
-  transition: all 350ms ease-out;
-
+  font-size: 1.25rem;
+  border: 2px solid;
+  border-color: var(--color-text);
+  border-radius: 5px;
+  padding: 1rem;
+  transition: padding 250ms;
+  
   &:hover {
-    background-color: var(--color-text);
-    color: var(--color-text-white);
+    padding: 1.25rem;
+  }
   }
 `;
 
@@ -39,7 +41,7 @@ const NotFoundPage = () => {
   return (
     <StyledMain>
       <title>Not found</title>
-      <StyledH1>404 <StyledSpan>Page not found</StyledSpan></StyledH1>
+      <StyledH1>404<StyledSpan>Page not found</StyledSpan></StyledH1>
       <p>
         <StyledLink to="/">Go home</StyledLink>
       </p>
