@@ -30,10 +30,10 @@ export const SEO = (
         title={title}
         titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
         link={[
-          { rel: `icon`, content: `./static/favicon.ico`, sizes: `any` },
-          { rel: `icon`, content: `./static/icon.svg`, type: `image/svg+xml` },
-          { rel: `apple-touch-icon`, content: `./static/apple-touch-icon.png` },
-          { rel: `manifest`, content: `./static/manifest.webmanifest` }
+          { rel: `icon`, content: `/favicon.ico`, sizes: `any` },
+          { rel: `icon`, content: `/icon.svg`, type: `image/svg+xml` },
+          { rel: `apple-touch-icon`, content: `/apple-touch-icon.png` },
+          { rel: `manifest`, content: `/manifest.webmanifest` }
         ]}
         meta={[
           {

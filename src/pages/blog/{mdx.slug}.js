@@ -68,7 +68,7 @@ const BlogPost = ({ data, location }) => {
       article={true}
       datePublished={data.mdx.frontmatter.datePublished}
       dateModified={data.mdx.frontmatter.dateModified}
-      image={`${defaults.siteUrl}/posts/${data.mdx.slug}.png`}
+      image={`/posts/${data.mdx.slug}.png`}
     >
       <Main>
         <ArticleHero
