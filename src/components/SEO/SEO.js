@@ -65,6 +65,10 @@ export const SEO = (
             content: article ? `article` : `website`,
           },
           {
+            property: `og:site_name`,
+            content: `Dmitry Anisov`
+          },
+          {
             name: `twitter:card`,
             content: `summary`,
           },
