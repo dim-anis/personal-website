@@ -51,6 +51,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     scrollbar-color: var(--color-primaryDimmed);
     scrollbar-width: thin;
+    scroll-behavior: smooth;
   }
 
   html, body {

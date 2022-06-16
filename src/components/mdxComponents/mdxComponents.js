@@ -2,6 +2,29 @@ import * as React from "react";
 
 import styled from "styled-components";
 
+// const Link = `
+//   a {
+//     margin-left: -2rem;
+//     float: left;
+//   }
+//   &:active {
+//     a {
+//       background-color: transparent;
+//     }
+//   }
+//   svg {
+//     visibility: hidden;
+//     fill: var(--color-primary);
+//   }
+//   &:hover {
+//     a {
+//       svg {
+//         visibility: visible;
+//       }
+//     }
+//   }
+// `
+
 //Paragraph styles
 
 const StyledP = styled.p`
