@@ -2,7 +2,7 @@ const siteMetadata = {
   title: "Dmitry Anisov Blog",
   description: "Trying to make the WEB a better place and sharing what I'm learning while doing that.",
   image: "./static/og-image.png",
-  siteUrl: "http://localhost:9000",
+  siteUrl: "http://dmitryanisov.com",
   siteLanguage: "en-US",
   siteLocale: "en_us",
   social: {
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: 'http://localhost:9000',
-        sitemap: 'http://localhost:9000/sitemap.xml',
+        host: `${siteMetadata.siteUrl}`,
+        sitemap: `${siteMetadata.siteUrl}/sitemap.xml}`,
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
