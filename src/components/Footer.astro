@@ -2,10 +2,14 @@
 const today = new Date();
 ---
 
+<hr />
 <footer>
 	&copy; {today.getFullYear()} Dmitry Anisov. All rights reserved.
 </footer>
 <style>
+  hr {
+    border-top: 1px solid var(--color-text-400);
+  }
 	footer {
 		padding: 25px;
 		text-align: center;

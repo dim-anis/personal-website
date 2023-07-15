@@ -1,6 +1,4 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
 
 export interface Props {
@@ -19,11 +17,6 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
-
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -47,23 +40,66 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
 <!-- Client side JS to detect/set theme -->
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
+const storageKey = 'theme-preference';
+
+const onClick = () => {
+  theme.value = theme.value === 'light'
+    ? 'dark'
+    : 'light'
+
+  setPreference();
+}
+
+const getColorPreference = () => {
+  const themeValue = localStorage.getItem(storageKey);
+  if (themeValue) {
+    return themeValue;
   }
-  window.localStorage.setItem("theme", theme);
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light'
+}
+
+const setPreference = () => {
+  localStorage.setItem(storageKey, theme.value);
+  reflectPreference();
+}
+
+const theme = {
+  value: getColorPreference(),
+}
+
+const reflectPreference = () => {
+  document.firstElementChild
+    ?.setAttribute('data-theme', theme.value);
+  document.querySelector('#theme-toggle')
+    ?.setAttribute('aria-label', theme.value);
+}
+
+reflectPreference();
+
+window.onload = () => {
+  reflectPreference();
+
+  document
+    .querySelector('#theme-toggle')
+    ?.addEventListener('click', onClick);
+}
+
+window
+  .matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', ({ matches: isDark }) => {
+    theme.value = isDark ? 'dark' : 'light';
+    setPreference();
+  });
 </script>
 
