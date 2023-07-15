@@ -1,0 +1,17 @@
+---
+type Props = {
+  articleAgeInYears: number;
+};
+
+const {articleAgeInYears}= Astro.props;
+---
+
+<div class="warning">This article was written over {articleAgeInYears > 1 ? `${articleAgeInYears} years` : `${articleAgeInYears} year`} ago and may be outdated</div>
+<style>
+  .warning {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-red-400);
+    border-radius: 0.5rem;
+    color: var(--color-red-400);
+  } 
+</style>

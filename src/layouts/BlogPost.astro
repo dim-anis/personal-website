@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import MayBeOutdated from '../components/MayBeOutdated.astro';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+const currDate = new Date();
+const articleAgeInYears = currDate.getFullYear() - (updatedDate?.getFullYear() || pubDate.getFullYear());
+const isOutdated = articleAgeInYears >= 1;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			hr {
+				border-top: 1px solid var(--color-text-400);
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article class="flow">
+				{heroImage && <img src={heroImage} alt="" />}
+				<h1 class="title">{title}</h1>
+				<FormattedDate date={pubDate} />
+				{
+					updatedDate && (
+						<div class="last-updated-on">
+							Last updated on <FormattedDate date={updatedDate} />
+						</div>
+					)
+				}
+        {
+          isOutdated && <MayBeOutdated articleAgeInYears={articleAgeInYears} />
+        }
+				<hr />
+				<slot />
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
