@@ -1,0 +1,22 @@
+---
+import ProjectCard from '../components/ProjectCard.astro';
+---
+
+<section>
+  <h2>Projects</h2>
+  <ul class='projects-wrapper'>
+    <ProjectCard title='tg-workout-tracker' description='A workout tracker built with GrammyJS.'/>
+    <ProjectCard title='personal-website' description='My personal website created with Astro.'/>
+  </ul>
+</section>
+<style>
+  .projects-wrapper {
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+    padding: unset;
+  }
+  .projects-wrapper > * {
+    flex: 1;
+  }
+</style>

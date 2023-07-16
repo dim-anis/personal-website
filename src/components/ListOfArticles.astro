@@ -8,15 +8,30 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <section>
-  <h2>Latest Posts</h2>
   <ul>
     {
       posts.map((post) => (
         <li>
-          <FormattedDate date={post.data.pubDate} />
           <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+          <FormattedDate date={post.data.pubDate} />
         </li>
       ))
     }
   </ul>
+  <hr />
 </section>
+<style>
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+  ul li {
+    display: flex;
+    justify-content: space-between;
+  }
+  ul li :global(time) {
+    font-style: italic;
+    font-size: var(--fs-300);
+    color: var(--color-text-200);
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+type Props = {
+  language?: string,
+  title: string,
+  description: string,
+  stats?: {
+    stars: number,
+    watching: number,
+    forks: number
+  }
+}
+
+const {language, title, description, stats} = Astro.props;
+---
+
+<li>
+  <a>
+    <strong>{title}</strong>
+    <p>{description}</p>
+  </a>
+</li>
+<style>
+  li {
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow);
+    background: var(--color-background-300);
+  }
+  li:hover {
+    background: var(--color-background-200);
+  }
+  p {
+    font-size: var(--fs-300);
+    color: var(--color-text-200);
+    margin: 0;
+  }
+</style>
