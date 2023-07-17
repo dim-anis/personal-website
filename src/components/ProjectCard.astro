@@ -1,8 +1,9 @@
 ---
 type Props = {
-  language?: string,
+  href: string,
   title: string,
   description: string,
+  language?: string,
   stats?: {
     stars: number,
     watching: number,
@@ -10,29 +11,74 @@ type Props = {
   }
 }
 
-const {language, title, description, stats} = Astro.props;
+const {href, language, title, description, stats} = Astro.props;
 ---
 
+
 <li>
-  <a>
-    <strong>{title}</strong>
-    <p>{description}</p>
-  </a>
+  <div class="card-wrapper">
+    <div class="card-content">
+      <div class="card-title">
+        <a href={href} target="_blank">{title}</a>
+        <span class="tag">Public</span>
+      </div>
+      <p>{description}</p>
+      <p>
+        <span class="language-wrapper">
+          <span class="language-circle"></span>
+          <span>{language}</span>
+        </span>
+      </p>
+    </div>
+  </div>
 </li>
+
 <style>
-  li {
-    cursor: pointer;
-    border-radius: 0.5rem;
-    padding: 1rem 1.5rem;
-    box-shadow: var(--shadow);
-    background: var(--color-background-300);
-  }
-  li:hover {
-    background: var(--color-background-200);
+  @media (min-width: 650px) {
+    li {
+      flex-basis: calc(50% - 0.5rem);
+      align-content: stretch;
+    }
   }
   p {
-    font-size: var(--fs-300);
+    font-size: var(--fs-200);
     color: var(--color-text-200);
-    margin: 0;
+    margin-bottom: 0;
+  }
+  a {
+    font-size: var(--fs-300);
+    cursor: pointer;
+  }
+  .tag {
+    border: 1px solid var(--color-text-200);
+    border-radius: 0.5rem;
+    font-size: var(--fs-100);
+    padding: 0rem 0.5rem;
+    line-height: var(--fs-400);
+  }
+  .language-wrapper {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .language-circle {
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--color-blue-400);
+    width: var(--fs-100);
+    height: var(--fs-100);
+  }
+  .card-wrapper {
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-text-200);
+  }
+  .card-content {
+    padding: 1.5rem 1rem;
+  }
+  .card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>

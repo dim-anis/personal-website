@@ -9,9 +9,11 @@ const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
 
-<a aria-current={isActive ? 'page' : undefined} href={href} {...props}>
-	<slot />
-</a>
+<li>
+  <a aria-current={isActive ? 'page' : undefined} href={href} {...props}>
+    <slot />
+  </a>
+</li>
 <style>
 	a {
 		display: inline-block;

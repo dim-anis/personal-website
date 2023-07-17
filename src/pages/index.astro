@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Intro from '../components/Intro.astro';
+import Hero from '../components/Hero.astro';
 import ListOfArticles from '../components/ListOfArticles.astro';
 import LatestProjects from '../components/LatestProjects.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
@@ -16,9 +16,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header title={SITE_TITLE} />
 		<main>
-      <Intro />
-      <section>
-        <h2>Recent Posts</h2>
+      <Hero />
+      <section aria-labelledby="recent-posts-title">
+        <h2 id="recent-posts-title">Recent Posts</h2>
         <ListOfArticles />
       </section>
       <LatestProjects />

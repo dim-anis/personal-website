@@ -2,21 +2,38 @@
 import ProjectCard from '../components/ProjectCard.astro';
 ---
 
-<section>
-  <h2>Projects</h2>
+<section aria-labelledby="projects-title">
+  <h2 id="projects-title">Projects</h2>
   <ul class='projects-wrapper'>
-    <ProjectCard title='tg-workout-tracker' description='A workout tracker built with GrammyJS.'/>
-    <ProjectCard title='personal-website' description='My personal website created with Astro.'/>
+    <ProjectCard 
+      href='https://github.com/dim-anis/tg-workout-tracker'
+      title='tg-workout-tracker' 
+      description='A workout tracker built with GrammyJS.'
+      language='TypeScript'
+    />
+    <ProjectCard 
+      href='https://github.com/dim-anis/personal-website'
+      title='personal-website' 
+      description='My personal website created with Astro.'
+      language='TypeScript'
+    />
   </ul>
 </section>
 <style>
   .projects-wrapper {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     list-style-type: none;
     padding: unset;
   }
   .projects-wrapper > * {
     flex: 1;
+  }
+  @media (min-width: 650px) {
+    .projects-wrapper {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
   }
 </style>

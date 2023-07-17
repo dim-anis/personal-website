@@ -1,13 +1,15 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import NavItem from './NavItem.astro';
 ---
 
 <header>
 	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="https://github.com/dim-anis" target="_blank">GitHub</HeaderLink>
-		<HeaderLink href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=anis.dim@gmail.com" target="_blank">Email</HeaderLink>
+    <ul>
+      <NavItem href="/">Home</NavItem>
+      <NavItem href="/blog">Blog</NavItem>
+      <NavItem href="https://github.com/dim-anis" target="_blank">GitHub</NavItem>
+      <NavItem href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=anis.dim@gmail.com" target="_blank">Email</NavItem>
+    </ul>
 	</nav>
   <button
     id="theme-toggle"
@@ -23,6 +25,13 @@ import HeaderLink from './HeaderLink.astro';
   </button>
 </header>
 <style>
+  ul {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 	header {
     display: flex;
     justify-content: space-between;
@@ -38,17 +47,17 @@ import HeaderLink from './HeaderLink.astro';
     border: 0;
     background: 0;
     border-radius: 50%;
-    cursor: pointer;
     padding: 0.5rem;
-    opacity: 0.8;
     color: var(--color-text-200);
+    opacity: 0.8;
+    cursor: pointer;
   }
   .theme-toggle:hover {
     color: var(--color-text-400);
     opacity: 1;
   }
-  .theme-toggle svg {
-    inline-size: 100%;
-    block-size: 100%;
+  svg {
+    height: 100%;
+    width: var(--fs-600);
   }
 </style>

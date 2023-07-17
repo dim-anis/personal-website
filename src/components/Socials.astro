@@ -1,3 +1,9 @@
+---
+type Props = {
+  size?: string
+}
+const {size} = Astro.props;
+---
 <ul>
   <li>
     <a href='https://github.com/dim-anis' aria-label='Github' target='_blank' rel='nofollow noopener noreferrer'>
@@ -47,7 +53,7 @@
     </a>
   </li>
 </ul>
-  <style>
+  <style define:vars={{size}}>
     ul {
       list-style-type: none;
       padding: unset;
@@ -57,6 +63,10 @@
     }
     li {
       cursor: pointer;
+    }
+    svg {
+      height: 100%;
+      width: var(--fs-600);
     }
     a[aria-label='Github']:hover,
     a[aria-label='Github']:focus{
