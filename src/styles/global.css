@@ -1,15 +1,6 @@
 :root {
   --ff-base: 'Epilogue', sans-serif;
 
-  /* --fs-100: clamp(0.69rem, calc(0.69rem + 0.04vw), 0.72rem); */
-  /* --fs-200: clamp(0.83rem, calc(0.81rem + 0.12vw), 0.90rem); */
-  /* --fs-300: clamp(1.00rem, calc(0.96rem + 0.22vw), 1.13rem); */
-  /* --fs-400: clamp(1.20rem, calc(1.13rem + 0.36vw), 1.41rem); */
-  /* --fs-500: clamp(1.44rem, calc(1.33rem + 0.55vw), 1.76rem); */
-  /* --fs-600: clamp(1.73rem, calc(1.56rem + 0.82vw), 2.20rem); */
-  /* --fs-700: clamp(2.07rem, calc(1.84rem + 1.17vw), 2.75rem); */
-  /* --fs-800: clamp(2.49rem, calc(2.16rem + 1.64vw), 3.43rem); */
-
   --fs-100: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.80rem);
   --fs-200: clamp(0.94rem, calc(0.92rem + 0.11vw), 1.00rem);
   --fs-300: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
@@ -24,11 +15,6 @@ html {
 }
 /* catppuccin-latte */
 html[data-theme="light"] {
-  /* yellow */
-  --color-primary: hsl(35, 77%, 49%);
-  /* teal */
-  --color-primary:hsl(183, 74%, 35%);
-  --color-accent: hsl(109, 58%, 40%);
   --color-background-200: hsl(225, 14%, 77%);
   --color-background-300: hsl(223, 16%, 83%);
   --color-background-400: hsl(220, 23%, 95%);
@@ -46,9 +32,6 @@ html[data-theme="light"] {
 }
 /* catppuccin-machiato */
 html[data-theme="dark"] {
-  --color-primary: hsl(266, 85%, 58%);
-  --color-primary: hsl(40, 70%, 78%);
-  --color-accent: hsl(105, 48%, 72%);
   --color-background-200: hsl(231, 16%, 34%);
   --color-background-300: hsl(230, 19%, 26%);
   --color-background-400: hsl(232, 23%, 18%);
@@ -82,7 +65,7 @@ body {
 h1,
 h2,
 h3 {
-	color: var(--color-primary);
+	color: var(--color-text-400);
   font-family: var(--ff-accent);
   line-height: 1.1;
   text-wrap: balance;
@@ -100,15 +83,15 @@ h3 {
   --flow-space: 1em;
 }
 ::marker {
-  color: var(--color-primary);
+  color: var(--color-blue-400);
 }
 a {
-	color: var(--color-primary);
+	color: var(--color-text-400);
   transition: color 0.2s ease;
 }
 a:hover, 
 a:focus {
-  color: var(--color-accent);  
+  color: var(--color-blue-400);  
 }
 nav a {
 	margin-right: 10px;

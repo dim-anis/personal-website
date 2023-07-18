@@ -11,8 +11,9 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 
 const currDate = new Date();
-const articleAgeInYears = currDate.getFullYear() - (updatedDate?.getFullYear() || pubDate.getFullYear());
-const isOutdated = articleAgeInYears >= 1;
+const timeDiff = currDate.getTime() - (updatedDate?.getTime() || pubDate.getTime());
+const yearsDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25)); 
+const isOutdated = yearsDiff>= 1;
 ---
 
 <html lang="en">
@@ -44,7 +45,7 @@ const isOutdated = articleAgeInYears >= 1;
 					)
 				}
         {
-          isOutdated && <MayBeOutdated articleAgeInYears={articleAgeInYears} />
+          isOutdated && <MayBeOutdated articleAgeInYears={yearsDiff} />
         }
 				<hr />
 				<slot />

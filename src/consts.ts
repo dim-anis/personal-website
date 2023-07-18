@@ -1,2 +1,2 @@
-export const SITE_TITLE = 'Dmitry Anisov';
-export const SITE_DESCRIPTION = "Trying to make the web a better place and sharing what I'm learning while doing that."
+export const SITE_TITLE = "Dmitry Anisov";
+export const SITE_DESCRIPTION = "Join me on a learning adventure through software development, as I share insights on developer tools, productivity, and my journey with new programming languages.";
