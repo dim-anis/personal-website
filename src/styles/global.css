@@ -12,6 +12,7 @@
 }
 html {
   color-scheme: light dark;
+  scroll-behavior: smooth;
 }
 /* catppuccin-latte */
 html[data-theme="light"] {
