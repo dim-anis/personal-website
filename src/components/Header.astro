@@ -1,29 +1,36 @@
 ---
-import NavItem from './NavItem.astro';
+import MainNav from "./MainNav.astro";
 ---
 
 <header>
   <a href="#main-content">skip navigation</a>
-	<nav>
-    <ul>
-      <NavItem href="/">Home</NavItem>
-      <NavItem href="/blog">Blog</NavItem>
-      <NavItem href="https://github.com/dim-anis" target="_blank">GitHub</NavItem>
-      <NavItem href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=anis.dim@gmail.com" target="_blank">Email</NavItem>
-    </ul>
-	</nav>
-  <button
-    id="theme-toggle"
-    aria-label="auto"
-    class="theme-toggle"
-    title="Toggles light and dark"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg"  width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-      <path d="M12 9a3 3 0 0 0 0 6v-6z" />
-      <path d="M6 6h3.5l2.5 -2.5l2.5 2.5h3.5v3.5l2.5 2.5l-2.5 2.5v3.5h-3.5l-2.5 2.5l-2.5 -2.5h-3.5v-3.5l-2.5 -2.5l2.5 -2.5z" />
-    </svg>
-  </button>
+  <div>
+    <MainNav />
+    <button
+      id="theme-toggle"
+      aria-label="auto"
+      class="theme-toggle"
+      title="Toggles light and dark"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="44"
+        height="44"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M12 9a3 3 0 0 0 0 6v-6z"></path>
+        <path
+          d="M6 6h3.5l2.5 -2.5l2.5 2.5h3.5v3.5l2.5 2.5l-2.5 2.5v3.5h-3.5l-2.5 2.5l-2.5 -2.5h-3.5v-3.5l-2.5 -2.5l2.5 -2.5z"
+        ></path>
+      </svg>
+    </button>
+  </div>
 </header>
 <style>
   a {
@@ -41,22 +48,15 @@ import NavItem from './NavItem.astro';
     transform: translateY(0);
     color: var(--color-background-400);
   }
-  ul {
-    display: flex;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-	header {
+  div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-		margin: 2rem 0rem;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+    height: 5rem;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
   .theme-toggle {
     display: flex;
     align-items: center;

@@ -1,0 +1,47 @@
+---
+import NavItem from "./NavItem.astro";
+
+type NavItemEntry = {
+  title: string;
+  href: string;
+  target?: "_blank";
+};
+
+const navItems: NavItemEntry[] = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+  },
+  {
+    title: "GitHub",
+    href: "https://github.com/dim-anis",
+    target: "_blank",
+  },
+  {
+    title: "Email",
+    href: "https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=anis.dim@gmail.com",
+    target: "_blank",
+  },
+];
+---
+
+<nav>
+  <ul>
+    {navItems.map((item) => <NavItem href={item.href} title={item.title} />)}
+  </ul>
+</nav>
+
+<style>
+  ul {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>

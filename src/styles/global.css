@@ -1,14 +1,14 @@
 :root {
-  --ff-base: 'Epilogue', sans-serif;
+  --ff-base: "Epilogue", sans-serif;
 
-  --fs-100: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.80rem);
-  --fs-200: clamp(0.94rem, calc(0.92rem + 0.11vw), 1.00rem);
+  --fs-100: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
+  --fs-200: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
   --fs-300: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
   --fs-400: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
-  --fs-500: clamp(1.62rem, calc(1.50rem + 0.58vw), 1.95rem);
+  --fs-500: clamp(1.62rem, calc(1.5rem + 0.58vw), 1.95rem);
   --fs-600: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
   --fs-700: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
-  --fs-800: clamp(2.80rem, calc(2.45rem + 1.77vw), 3.82rem);
+  --fs-800: clamp(2.8rem, calc(2.45rem + 1.77vw), 3.82rem);
 }
 html {
   color-scheme: light dark;
@@ -49,31 +49,33 @@ html[data-theme="dark"] {
   --color-purple-400: hsl(267, 83%, 80%);
 }
 body {
-	font-family: var(--ff-base);
-  font-size: var(--fs-400);
-  margin-inline: auto;
-  width: min(100% - 3rem, 60ch);
-	text-align: left;
-	background-color: var(--color-background-400);
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.6;
-	color: var(--color-text-400);
+  min-height: 100vh;
+  width: min(100% - 3rem, 75ch);
+  margin-right: auto;
+  margin-left: auto;
+  font-family: var(--ff-base);
+  font-size: var(--fs-300);
+  background-color: var(--color-background-400);
+  color: var(--color-text-400);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.6;
+  color: var(--color-text-400);
+}
+@media (min-width: 1400px) {
+  body {
+    max-width: 1400px;
+  }
 }
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
 }
-h1,
 h2,
 h3 {
-	color: var(--color-text-400);
+  color: var(--color-text-400);
   font-family: var(--ff-accent);
   line-height: 1.1;
   text-wrap: balance;
-}
-h1 {
-  font-size: var(--fs-700);
-  margin-top: 2em;
 }
 h2 {
   font-size: var(--fs-600);
@@ -87,19 +89,19 @@ h3 {
   color: var(--color-blue-400);
 }
 a {
-	color: var(--color-text-400);
+  color: var(--color-text-400);
   transition: color 0.2s ease;
 }
-a:hover, 
+a:hover,
 a:focus {
-  color: var(--color-blue-400);  
+  color: var(--color-blue-400);
 }
 nav a {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 hr {
   border-top: 1px solid var(--color-text-200);
@@ -107,36 +109,36 @@ hr {
   margin-top: 2rem;
 }
 input {
-	font-size: 16px;
+  font-size: 16px;
 }
 content {
-	line-height: 1.6;
+  line-height: 1.6;
 }
 table {
-	width: 100%;
+  width: 100%;
 }
-img{
-	max-width: 100%;
+img {
+  max-width: 100%;
   display: block;
 }
 code {
-	padding: 2px 5px;
+  padding: 2px 5px;
   border-radius: 0.5rem;
-	background-color: var(--color-background-300);
+  background-color: var(--color-background-300);
 }
 pre {
-	padding: 1rem;
+  padding: 1rem;
   border-radius: 0.5rem;
 }
 pre > code {
-	all: unset;
+  all: unset;
 }
 blockquote {
   border-left: 5px solid var(--color-background-300);
-	color: var(--color-text-200);
-	padding: 0rem 1rem;
-	margin-inline: auto;
-	font-style: italic;
+  color: var(--color-text-200);
+  padding: 0rem 1rem;
+  margin-inline: auto;
+  font-style: italic;
 }
 blockquote code {
   background-color: var(--color-background-200);

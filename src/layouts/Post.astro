@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../components/FormattedDate.astro";
+import MayBeOutdated from "../components/MayBeOutdated.astro";
+import TableOfContents from "@/components/toc/toc";
+import { createToc } from "@/lib/toc";
+
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { data } = post;
+const { title, pubDate, updatedDate, heroImage } = data;
+
+const { headings } = await post.render();
+
+const toc = createToc(headings);
+
+const currDate = new Date();
+const timeDiff =
+  currDate.getTime() - (updatedDate?.getTime() || pubDate.getTime());
+const yearsDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25));
+const isOutdated = yearsDiff >= 1;
+---
+
+<main id="main-content">
+  <div class="container">
+    <article class="flow">
+      {heroImage && <img src={heroImage} alt="" />}
+      <h1 class="title">{title}</h1>
+      <FormattedDate date={pubDate} />
+      {
+        updatedDate && (
+          <div class="last-updated-on">
+            Last updated on <FormattedDate date={updatedDate} />
+          </div>
+        )
+      }
+      {isOutdated && <MayBeOutdated articleAgeInYears={yearsDiff} />}
+      <hr />
+      <slot />
+    </article>
+    <div class="toc-container">
+      <TableOfContents toc={toc} client:load />
+    </div>
+  </div>
+</main>
+<style>
+  main {
+    position: relative;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  h1 {
+    margin-top: 0rem;
+  }
+  .container {
+    flex: 1 1 0%;
+    gap: 2rem;
+  }
+  .toc-container {
+    display: hidden;
+  }
+  @media (min-width: 1280px) {
+    .container {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+    }
+    .toc-container {
+      display: block;
+    }
+  }
+  hr {
+    border-top: 1px solid var(--color-text-400);
+  }
+  .last-updated-on {
+    font-style: italic;
+    font-size: var(--fs-300);
+  }
+</style>
