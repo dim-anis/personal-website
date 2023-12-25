@@ -8,10 +8,7 @@ export default function TableOfContents({ toc }: { toc: Heading[] }) {
     () =>
       toc
         ? toc
-            .flatMap((item) => [
-              item.slug,
-              item?.subheadings.map((item) => item.slug),
-            ])
+            .flatMap((item) => flattenToc(item))
             .flat()
             .filter(Boolean)
         : [],
@@ -33,6 +30,20 @@ export default function TableOfContents({ toc }: { toc: Heading[] }) {
       </div>
     )
   );
+}
+
+function flattenToc(item: Heading) {
+  if (!item) {
+    return [];
+  }
+
+  const result = [item.slug];
+
+  if (item.subheadings) {
+    result.push(...item.subheadings.flatMap((subitem) => flattenToc(subitem)));
+  }
+
+  return result;
 }
 
 function useActiveItem(itemIds: (string | undefined)[]) {
