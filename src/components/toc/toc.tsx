@@ -5,13 +5,7 @@ import classes from "./toc.module.css";
 
 export default function TableOfContents({ toc }: { toc: Heading[] }) {
   const itemIds = React.useMemo(
-    () =>
-      toc
-        ? toc
-            .flatMap((item) => flattenToc(item))
-            .flat()
-            .filter(Boolean)
-        : [],
+    () => (toc ? toc.flatMap((item) => flattenToc(item)).filter(Boolean) : []),
     [toc],
   );
 
