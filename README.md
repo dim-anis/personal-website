@@ -1,2 +1,3 @@
 ## dmitryanisov.com
-Personal website create with Astro 🧑‍🚀.
+
+Personal website created with Astro 🧑‍🚀.
