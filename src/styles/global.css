@@ -1,146 +1,89 @@
-:root {
-  --ff-base: "Epilogue", sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --fs-100: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.8rem);
-  --fs-200: clamp(0.94rem, calc(0.92rem + 0.11vw), 1rem);
-  --fs-300: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
-  --fs-400: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
-  --fs-500: clamp(1.62rem, calc(1.5rem + 0.58vw), 1.95rem);
-  --fs-600: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
-  --fs-700: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
-  --fs-800: clamp(2.8rem, calc(2.45rem + 1.77vw), 3.82rem);
-}
-html {
-  color-scheme: light dark;
-  scroll-behavior: smooth;
-}
-/* catppuccin-latte */
-html[data-theme="light"] {
-  --color-background-200: hsl(225, 14%, 77%);
-  --color-background-300: hsl(223, 16%, 83%);
-  --color-background-400: hsl(220, 23%, 95%);
-  --color-background-500: hsl(220, 22%, 92%);
-  --color-text-200: hsl(233, 10%, 47%);
-  --color-text-300: hsl(233, 13%, 41%);
-  --color-text-400: hsl(234, 16%, 35%);
-  --color-text-500: hsl(235, 19%, 29%);
-  --color-red-300: hsl(355, 76%, 59%);
-  --color-red-400: hsl(347, 87%, 44%);
-  --color-blue-300: hsl(197, 97%, 46%);
-  --color-blue-400: hsl(220, 91%, 54%);
-  --color-orange-400: hsl(21, 86%, 73%);
-  --color-purple-400: hsl(266, 85%, 58%);
-}
-/* catppuccin-machiato */
-html[data-theme="dark"] {
-  --color-background-200: hsl(231, 16%, 34%);
-  --color-background-300: hsl(230, 19%, 26%);
-  --color-background-400: hsl(232, 23%, 18%);
-  --color-background-500: hsl(233, 23%, 15%);
-  --color-text-200: hsl(227, 27%, 72%);
-  --color-text-300: hsl(228, 39%, 80%);
-  --color-text-400: hsl(227, 68%, 88%);
-  --color-text-500: hsl(227, 75%, 88%);
-  --color-red-300: hsl(355, 71%, 77%);
-  --color-red-400: hsl(351, 74%, 73%);
-  --color-blue-300: hsl(189, 59%, 73%);
-  --color-blue-400: hsl(220, 83%, 75%);
-  --color-orange-400: hsl(21, 86%, 73%);
-  --color-purple-400: hsl(267, 83%, 80%);
-}
-body {
-  min-height: 100vh;
-  width: min(100% - 3rem, 75ch);
-  margin-right: auto;
-  margin-left: auto;
-  font-family: var(--ff-base);
-  font-size: var(--fs-300);
-  background-color: var(--color-background-400);
-  color: var(--color-text-400);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.6;
-  color: var(--color-text-400);
-}
-@media (min-width: 1400px) {
-  body {
-    max-width: 1400px;
+@layer base {
+  :root {
+    /* latte base */
+    --background: 220, 23%, 95%;
+
+    /* mocha base */
+    --foreground: 240, 21%, 15%;
+
+    --muted: 220, 22%, 92%;
+    --muted-foreground: 233, 10%, 47%;
+
+    --card: 220, 23%, 95%;
+    --card-foreground: 240, 21%, 15%;
+
+    --popover: 220, 23%, 95%;
+    --popover-foreground: 240, 21%, 15%;
+
+    /* latte blue */
+    --primary: 224, 83%, 56%;
+    --primary-foreground: 220, 22%, 92%;
+
+    --secondary: 220, 22%, 92%;
+    --secondary-foreground: 240, 21%, 15%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 347, 87%, 44%;
+    --destructive-foreground: 220, 22%, 92%;
+
+    --border: 223, 16%, 83%;
+    --input: 223, 16%, 83%;
+    --ring: 224, 83%, 56%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* base */
+    --background: 240, 21%, 12%;
+
+    /* text */
+    --foreground: 228, 55%, 88%;
+
+    --muted: 240, 21%, 15%;
+    --muted-foreground: 231, 11%, 55%;
+
+    --card: 240, 21%, 12%;
+    --card-foreground: 228, 55%, 88%;
+
+    --popover: 240, 21%, 12%;
+    --popover-foreground: 228, 55%, 88%;
+
+    /* mocha blue */
+    --primary: 217, 92%, 76%;
+    --primary-foreground: 240, 21%, 15%;
+
+    --secondary: 240, 21%, 15%;
+    --secondary-foreground: 228, 55%, 88%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 240, 21%, 15%;
+
+    --destructive: 343, 81%, 75%;
+    --destructive-foreground: 240, 21%, 15%;
+
+    --border: 237, 16%, 23%;
+    --input: 237, 16%, 23%;
+    --ring: 217, 92%, 76%;
+
+    --radius: 0.5rem;
   }
 }
-.flow > * + * {
-  margin-top: var(--flow-space, 1em);
-}
-h2,
-h3 {
-  color: var(--color-text-400);
-  font-family: var(--ff-accent);
-  line-height: 1.1;
-  text-wrap: balance;
-}
-h2 {
-  font-size: var(--fs-600);
-  --flow-space: 1.5em;
-}
-h3 {
-  font-size: var(--fs-500);
-  --flow-space: 1em;
-}
-::marker {
-  color: var(--color-blue-400);
-}
-a {
-  color: var(--color-text-400);
-  transition: color 0.2s ease;
-}
-a:hover,
-a:focus {
-  color: var(--color-blue-400);
-}
-nav a {
-  margin-right: 10px;
-}
-textarea {
-  width: 100%;
-  font-size: 16px;
-}
-hr {
-  border-top: 1px solid var(--color-text-200);
-  opacity: 0.4;
-  margin-top: 2rem;
-}
-input {
-  font-size: 16px;
-}
-content {
-  line-height: 1.6;
-}
-table {
-  width: 100%;
-}
-img {
-  max-width: 100%;
-  display: block;
-}
-code {
-  padding: 2px 5px;
-  border-radius: 0.5rem;
-  background-color: var(--color-background-300);
-}
-pre {
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-pre > code {
-  all: unset;
-}
-blockquote {
-  border-left: 5px solid var(--color-background-300);
-  color: var(--color-text-200);
-  padding: 0rem 1rem;
-  margin-inline: auto;
-  font-style: italic;
-}
-blockquote code {
-  background-color: var(--color-background-200);
-  color: var(--color-text-300);
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
 }
