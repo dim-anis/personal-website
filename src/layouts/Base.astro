@@ -86,7 +86,7 @@ const { title, description, image = "/og-default.webp" } = Astro.props;
       };
 
       const reflectPreference = () => {
-        document.firstElementChild?.setAttribute("data-theme", theme.value);
+        document.firstElementChild?.setAttribute("class", theme.value);
         document
           .querySelector("#theme-toggle")
           ?.setAttribute("aria-label", theme.value);
@@ -110,9 +110,11 @@ const { title, description, image = "/og-default.webp" } = Astro.props;
         });
     </script>
   </head>
-  <body>
-    <Header />
-    <slot />
-    <Footer />
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <div class="flex min-h-screen flex-col">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
   </body>
 </html>

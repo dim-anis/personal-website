@@ -10,8 +10,9 @@ export default defineConfig({
   site: "https://dmitryanisov.com",
   markdown: {
     shikiConfig: {
-      theme: "rose-pine-moon"
-    }
+      theme: "catppuccin-macchiato",
+    },
   },
-  integrations: [react(), mdx(), sitemap(), tailwind()]
+  integrations: [react(), mdx(), sitemap(), tailwind()],
 });
+

@@ -1,80 +1,28 @@
 ---
 import MainNav from "./MainNav.astro";
+import { Sun } from "lucide-astro";
 ---
 
-<header>
-  <a href="#main-content">skip navigation</a>
-  <div>
-    <MainNav />
+<header class="container">
+  <a
+    href="#main-content"
+    class="absolute top-0 left-2 translate-y-[-120%] transition-transform py-2 px-6 border-none focus:translate-y-0 bg-primary text-primary-foreground"
+    >skip navigation</a
+  >
+  <div class="flex justify-between items-center h-20 py-6">
+    <div class="flex items-center gap-6 md:gap-10">
+      <a href="/">
+        <span class="font-bold">Dmitry Anisov</span>
+      </a>
+      <MainNav />
+    </div>
     <button
-      id="theme-toggle"
       aria-label="auto"
-      class="theme-toggle"
-      title="Toggles light and dark"
+      id="theme-toggle"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-muted hover:text-accent-foreground h-9 py-2 w-9 px-0"
+      title="Toggles light and dark mode"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="44"
-        height="44"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path d="M12 9a3 3 0 0 0 0 6v-6z"></path>
-        <path
-          d="M6 6h3.5l2.5 -2.5l2.5 2.5h3.5v3.5l2.5 2.5l-2.5 2.5v3.5h-3.5l-2.5 2.5l-2.5 -2.5h-3.5v-3.5l-2.5 -2.5l2.5 -2.5z"
-        ></path>
-      </svg>
+      <Sun class="h-4 w-4" />
     </button>
   </div>
 </header>
-<style>
-  a {
-    position: absolute;
-    top: 0;
-    left: 0.5rem;
-    color: var(--color-background-300);
-    transform: translateY(-120%);
-    transition: transform 325ms ease-in;
-    background: var(--color-blue-400);
-    padding: 0.5rem 1.5rem;
-    border-radius: 0 0 0.25rem 0.25rem;
-  }
-  a:focus {
-    transform: translateY(0);
-    color: var(--color-background-400);
-  }
-  div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 5rem;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-  .theme-toggle {
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: 0;
-    border-radius: 50%;
-    padding: 0.5rem;
-    color: var(--color-text-200);
-    opacity: 0.8;
-    cursor: pointer;
-  }
-  .theme-toggle:hover {
-    color: var(--color-text-400);
-    transition: all 0.2s ease;
-    opacity: 1;
-  }
-  svg {
-    height: 100%;
-    width: var(--fs-600);
-  }
-</style>

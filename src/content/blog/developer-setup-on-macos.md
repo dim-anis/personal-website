@@ -3,7 +3,7 @@ title: "My Developer Setup on MacOS"
 description: "Join me on the journey of transforming my macOS machine into a development powerhouse!"
 subtitle: ""
 pubDate: "Jul 20 2023"
-updatedDate: "Jul 20 2023"
+updatedDate: "Mar 19 2024"
 tags: ["tools", "productivity", "macos"]
 publish: true
 ---
@@ -24,13 +24,13 @@ I've noticed that I barely ever use the Dock. I launch my apps using Spotlight o
 
 One of the first solutions is to reduce it's size in the settings:
 
-_System Settings > Desktop & Dock > Size (move the slider until you're satisfied)_
+> System Settings > Desktop & Dock > Size (move the slider until you're satisfied)
 
 ...but I go a step further and place it on the right of the screen and enable the setting to automatically hide it:
 
-_System Settings > Desktop & Dock > Automatically hide and show the Dock ✅_
+> System Settings > Desktop & Dock > Position on screen: right
 
-_System Settings > Desktop & Dock > Position on screen: right_
+> System Settings > Desktop & Dock > Automatically hide and show the Dock ✅
 
 That way it never gets in the way when I don't need it and if I do need it, all I need to do is hover the pointer over the right edge of the screen, and it slides out.
 
@@ -38,7 +38,7 @@ That way it never gets in the way when I don't need it and if I do need it, all 
 
 I use keyboard shortcuts to move between workspaces and I've found that enabling the **Reduce Motion** setting really helps with making the transitions instantaneous.
 
-_System Settings > Accessibility > Display > Reduce motion ✅_
+> System Settings > Accessibility > Display > Reduce motion ✅
 
 What really happens when you enable it is all of those beautiful macOS transitions are turned off. I much prefer it this way.
 
@@ -56,19 +56,19 @@ By default, whenever you open a new Finder window it shows you your recently ope
 
 Instead, in my view, it makes more sense to start with your home directory.
 
-_Finder Settings > General > New Finder windows show: \{your home dir}_
+> Finder Settings > General > New Finder windows show: \{your home dir}
 
 #### Remove Tags
 
 I personally don't use them, so I don't want them to pollute the sidebar.
 
-_Finder Settings > Tags > select and '-' to remove each tag_
+> Finder Settings > Tags > select and '-' to remove each tag
 
 #### Remove Airdrop
 
 I've never used it, and I probably won't.
 
-_Finder Settings > Sidebar > Airdrop ❌_
+> Finder Settings > Sidebar > Airdrop ❌
 
 Here you can also select any favorite locations you want to appear on the sidebar.
 
@@ -76,13 +76,13 @@ Here you can also select any favorite locations you want to appear on the sideba
 
 I want to be able to see exactly what file extension I'm dealing with when opening a directory so enable this too.
 
-_Finder Settings > Advanced > Show all filename extensions ✅_
+> Finder Settings > Advanced > Show all filename extensions ✅
 
 #### Show Path
 
 I feel like it should be enabled by default, but if you want to be able to see where you are on your hard drive, you may want to enable this option:
 
-_Finder > View > Show Path Bar_
+> Finder > View > Show Path Bar
 
 ## Homebrew Package Manager
 
@@ -102,7 +102,7 @@ Then, installing anything is as easy as:
 brew install --cask firefox
 ```
 
-_Use the `--cask` flag when installing desktop applications like Firefox or Discord. Otherwise simply run `brew install {name}`_
+> Use the `--cask` flag when installing desktop applications like Firefox or Discord. Otherwise simply run `brew install {name}`
 
 To check whether the app you're looking for is available in brew I usually just google something like `{application name} brew`.
 
@@ -118,7 +118,7 @@ Upgrade your **GUI apps** with:
 brew upgrade --cask
 ```
 
-_Some **casks** don't have versioning information and some of them have a buil-in upgrade mechanism (e.g. Chrome), in that case you may need to run the upgrade with a `--greedy` flag._
+> Some **casks** don't have versioning information and some of them have a buil-in upgrade mechanism (e.g. Chrome), in that case you may need to run the upgrade with a `--greedy` flag.
 
 Besides apps and cli utilities, brew can also be used to **install fonts**, which I think is a much more convenient way to do that.
 
@@ -235,7 +235,7 @@ Here's what it looks like:
 
 Here is a short list of cli-utilities that I currently use. Most of them are used in the context of Neovim - my editor of choice, but some of them are used standalone.
 
-Obligatory _I use VIM by the way_.
+> Obligatory I use VIM by the way.
 
 ### fzf
 

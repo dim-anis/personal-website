@@ -1,77 +1,36 @@
 ---
-import ProjectCard from '../components/ProjectCard.astro';
+import ProjectItem from "./ProjectItem.astro";
+
+const latestProjects = [
+  {
+    name: "Pizza Dough Calculator",
+    desc: "A pizza dough recipe calculator and organizer built in Next.js using the app router, server components, and server actions.",
+    ghHref: "https://github.com/dim-anis/pizza-calculator",
+    deployHref: "https://pizza-calculator-gray.vercel.app/",
+  },
+  {
+    name: "Interpreter for a C-like Language",
+    desc: "This is the result of having what seemed like way more fun than I should have diving into how interpreters work with one and only Thorsten Ball and his book Writing An Interpreter In Go",
+    ghHref: "https://github.com/dim-anis/ts-interpreter",
+  },
+  {
+    name: "Workout Tracker Telegram Bot",
+    desc: "A workout tracker with nifty features such as progress tracking, stats analysis, and next workout prediction.",
+    ghHref: "https://github.com/dim-anis/tg-workout-tracker",
+  },
+];
 ---
 
-<section aria-labelledby="projects-title">
-  <h2 id="projects-title">Projects</h2>
-  <ul class='projects-wrapper'>
-    <ProjectCard 
-      href='https://github.com/dim-anis/ts-interpreter'
-      title='ts-interpreter' 
-      description='Compiler for a C-like Language in TypeScript.'
-      language='TypeScript'
-    />
-    <ProjectCard 
-      href='https://github.com/dim-anis/tg-workout-tracker'
-      title='tg-workout-tracker' 
-      description='A workout tracker built with GrammyJS.'
-      language='TypeScript'
-    />
-    <ProjectCard 
-      href='https://github.com/dim-anis/personal-website'
-      title='personal-website' 
-      description='My personal website created with Astro.'
-      language='TypeScript'
-    />
-  </ul>
-  <button>
-    <a href='https://github.com/dim-anis?tab=repositories' target="_blank">
-      <span class="button-title">
-        <span>
-          See all
-        </span>
-        <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 12H20M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-    </a>
-  </button>
+<section aria-labelledby="projects-title" class="container space-y-6 py-8">
+  <div class="mx-auto flex max-w-[58rem] flex-col items-start space-y-6">
+    <h2
+      id="projects-title"
+      class="mt-10 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight first:mt-0"
+    >
+      Projects
+    </h2>
+    <div class="grid md:grid-cols-2 gap-4">
+      {latestProjects.map((project) => <ProjectItem {...project} />)}
+    </div>
+  </div>
 </section>
-<style>
-  .projects-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    list-style-type: none;
-    padding: unset;
-  }
-  .projects-wrapper > * {
-    flex: 1;
-  }
-  @media (min-width: 650px) {
-    .projects-wrapper {
-      flex-wrap: wrap;
-      flex-direction: row;
-    }
-  }
-  button {
-    background: none;
-    color: var(--color-text-200);
-    font-size: var(--fs-300);
-    border: none;
-    display: inline-block;
-    float: right;
-  }
-  a {
-    text-decoration: none;
-  }
-  svg {
-    height: 100%;
-    width: var(--fs-400);
-  }
-  .button-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-</style>

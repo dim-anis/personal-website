@@ -1,40 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import FormattedDate from './FormattedDate.astro';
-
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+import RecentPosts from "./RecentPosts.astro";
 ---
 
-<section>
-  <ul>
-    {
-      posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-          <FormattedDate date={post.data.pubDate} />
-        </li>
-      ))
-    }
-  </ul>
-  <hr />
+<section aria-labelledby="recent-posts-title" class="container space-y-6 py-8">
+  <div class="mx-auto flex max-w-[58rem] flex-col items-start space-y-4">
+    <h2
+      id="recent-posts-title"
+      class="mt-10 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight first:mt-0"
+    >
+      Recent Posts
+    </h2>
+    <RecentPosts />
+  </div>
 </section>
-<style>
-  a {
-    text-decoration: none;
-  }
-  ul {
-    list-style-type: none;
-    padding: unset;
-  }
-  ul li {
-    display: flex;
-    justify-content: space-between;
-  }
-  ul li :global(time) {
-    font-style: italic;
-    font-size: var(--fs-300);
-    color: var(--color-text-200);
-  }
-</style>

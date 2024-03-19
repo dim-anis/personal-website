@@ -1,7 +1,6 @@
 import useMounted from "@/hooks/use-mounted";
 import { Heading } from "@/lib/toc";
 import React from "react";
-import classes from "./toc.module.css";
 
 export default function TableOfContents({ toc }: { toc: Heading[] }) {
   const itemIds = React.useMemo(
@@ -18,8 +17,8 @@ export default function TableOfContents({ toc }: { toc: Heading[] }) {
 
   return (
     mounted && (
-      <div className={`${classes.tocContainer}`}>
-        <p className={`${classes.tocTitle}`}>In this article</p>
+      <div className="sticky top-8 text-sm">
+        <p className="m-0 font-bold pl-4">In this article</p>
         <Tree tree={toc} activeHeading={activeHeading} />
       </div>
     )
@@ -91,16 +90,16 @@ export function Tree({
   activeHeading: string;
 }) {
   return tree.length ? (
-    <ul className={`${classes.tocUl}`}>
+    <ul className="pl-4">
       {tree.map((item, index) => {
         return (
-          <li key={index} className={`${classes.tocLi}`}>
+          <li key={index} className="mt-0 pt-2">
             <a
               href={`#${item.slug}`}
               className={`${
                 item.slug === activeHeading
-                  ? classes.tocAnchorActive
-                  : classes.tocAnchor
+                  ? "text-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               {item.text}

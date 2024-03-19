@@ -1,11 +1,24 @@
 ---
-import BaseHead from "../../layouts/Base.astro";
-import ListOfArticles from "../../components/ListOfArticles.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import BaseHead from "@/layouts/Base.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import RecentPosts from "@/components/RecentPosts.astro";
 ---
 
 <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main id="main-content">
-    <ListOfArticles />
+  <main id="main-content" class="flex-1">
+    <section
+      aria-labelledby="recent-posts-title"
+      class="container space-y-6 py-8"
+    >
+      <div class="mx-auto flex max-w-[58rem] flex-col items-start space-y-4">
+        <h2
+          id="recent-posts-title"
+          class="mt-10 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight first:mt-0"
+        >
+          Blog Posts
+        </h2>
+        <RecentPosts />
+      </div>
+    </section>
   </main>
 </BaseHead>

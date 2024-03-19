@@ -1,41 +1,28 @@
----
-import Socials from '../components/Socials.astro';
----
-
-<section aria-labelledby="hero-title">
-  <div class="hero-wrapper">
-    <div>
-      <div class="hero-without-socials">
-        <div>
-          <h1 id="hero-title">Dmitry Anisov</h1>
-          <p>Welcome to my blog, where the world of web development converges with my passion for exploring cutting-edge technologies, mastering new programming languages, and fine-tuning my developer toolkit.</p>
-        </div>
-        <img src='../../dmitryanisov.webp' alt='Me busking in the sun on the beach wearing sunglasses' />
-      </div>
-      <Socials />
-    </div>
+<section aria-labelledby="hero-title" class="container space-y-6 py-8">
+  <div class="mx-auto flex max-w-[58rem] flex-col items-start space-y-4">
+    <h2
+      id="profile-title"
+      class="mt-10 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight first:mt-0"
+    >
+      Profile
+    </h2>
+    <p>
+      I'm a front-end developer who enjoys delving into the inner workings of
+      things. I'm very passionate about cooking and run a moderately successful <a
+        class="underline underline-offset-4 hover:text-primary"
+        href="www.youtube.com/@dmitryanisov974">YouTube channel</a
+      >
+      about it that is currently on hold. I lift weights and listen to good<sup
+        ><a href="#not-a-fact" id="not-a-fact">*</a></sup
+      > music.
+    </p>
+    <p>
+      On this blog you can expect content about web development, crafting the
+      perfect keyboard-driven developer environment using tools like Vim, tmux
+      and split keyboards, notes on my software and hardware projects as well as
+      my general thoughts on different subjects.
+    </p>
+    <hr />
+    <sup id="not-a-fact">*This information is not factual.</sup>
   </div>
-  <hr />
 </section>
-<style>
-  h1 {
-    margin-top: 3rem;
-  }
-  .hero-without-socials {
-    display: flex;
-    align-items: center;
-  }
-  p {
-    color: var(--color-text-300);
-  }
-  img {
-    display: none;
-  }
-  @media (min-width: 650px) {
-    img {
-      display: block;
-      height: 15rem;
-      border-radius: 50%;
-    }
-  }
-</style>

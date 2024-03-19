@@ -9,18 +9,10 @@ const { pathname } = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 ---
 
-<li>
+<li
+  class=`${isActive ? "text-foreground" : "text-muted-foreground"} hover:text-foreground transition-colors text-sm`
+>
   <a aria-current={isActive ? "page" : undefined} href={href} {...props}>
     {title}
   </a>
 </li>
-<style>
-  a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  a[aria-current="page"] {
-    font-weight: bolder;
-    text-decoration: underline;
-  }
-</style>
