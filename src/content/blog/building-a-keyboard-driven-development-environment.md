@@ -38,7 +38,7 @@ Compare this to a keyboard-first workflow:
 
 How many more opportunities to lose focus did you count in the former approach?
 
-<video loop="true" muted="true" controls='true' title="go to definition in vscode vs neovim" src="./../../../public/building-a-keyboard-driven-development-environment/vscode-vs-vim-gd.mp4"></video>
+<video loop="true" muted="true" controls='true' title="go to definition in vscode vs neovim" src="/public/building-a-keyboard-driven-development-environment/vscode-vs-vim-gd.mp4"></video>
 
 > Yes, I have explicitly written out some steps that could be counted as parts of one for a more impressive 'wow' effect, but still. Don't forget you also have to navigate back to the keyboard and make sure you've placed your fingers on the home row, while in the latter case the fingers had to travel at most a couple of keys. And I'm not even talking about navigating back to where you started from (psst, it's `Ctrl - O` in Vim).
 
