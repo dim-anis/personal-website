@@ -1,115 +1,40 @@
 ---
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import BaseHead from "@/layouts/BaseHead.astro";
+import MetaData from "@/layouts/MetaData.astro";
 import "../styles/global.css";
 
-export interface Props {
+export type Props = {
   title: string;
   description: string;
+  type: "article" | "website";
+  publishedTime?: Date;
   image?: string;
-}
+};
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/og-default.webp" } = Astro.props;
+const {
+  title,
+  description,
+  type,
+  publishedTime,
+  image = "/og-default.webp",
+} = Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="generator" content={Astro.generator} />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Primary Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Roboto&display=swap"
-      rel="stylesheet"
+  <BaseHead>
+    <MetaData
+      canonicalURL={canonicalURL}
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      publishedTime={publishedTime}
     />
-
-    <!-- Client side JS to detect/set theme -->
-    <script is:inline>
-      const storageKey = "theme-preference";
-
-      const onClick = () => {
-        theme.value = theme.value === "light" ? "dark" : "light";
-
-        setPreference();
-      };
-
-      const getColorPreference = () => {
-        const themeValue = localStorage.getItem(storageKey);
-        if (themeValue) {
-          return themeValue;
-        }
-
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      };
-
-      const setPreference = () => {
-        localStorage.setItem(storageKey, theme.value);
-        reflectPreference();
-      };
-
-      const theme = {
-        value: getColorPreference(),
-      };
-
-      const reflectPreference = () => {
-        document.firstElementChild?.setAttribute("class", theme.value);
-        document
-          .querySelector("#theme-toggle")
-          ?.setAttribute("aria-label", theme.value);
-      };
-
-      reflectPreference();
-
-      window.onload = () => {
-        reflectPreference();
-
-        document
-          .querySelector("#theme-toggle")
-          ?.addEventListener("click", onClick);
-      };
-
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", ({ matches: isDark }) => {
-          theme.value = isDark ? "dark" : "light";
-          setPreference();
-        });
-    </script>
-  </head>
+  </BaseHead>
   <body class="min-h-screen bg-background font-sans antialiased">
     <div class="flex min-h-screen flex-col">
       <Header />

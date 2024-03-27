@@ -1,15 +1,15 @@
 ---
-import BaseHead from "../layouts/Base.astro";
 import Profile from "../components/Hero.astro";
 import ListOfArticles from "../components/ListOfArticles.astro";
 import LatestProjects from "../components/LatestProjects.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Base from "../layouts/Base.astro";
 ---
 
-<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Base title={SITE_TITLE} description={SITE_DESCRIPTION} type="website">
   <main id="main-content" class="flex-1">
     <Profile />
     <ListOfArticles />
     <LatestProjects />
   </main>
-</BaseHead>
+</Base>

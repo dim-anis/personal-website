@@ -1,0 +1,67 @@
+<head>
+  <!-- Global Metadata -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="generator" content={Astro.generator} />
+
+  <slot />
+
+  <!-- Client side JS to detect/set theme -->
+  <script is:inline>
+    const storageKey = "theme-preference";
+
+    const onClick = () => {
+      theme.value = theme.value === "light" ? "dark" : "light";
+
+      setPreference();
+    };
+
+    const getColorPreference = () => {
+      const themeValue = localStorage.getItem(storageKey);
+      if (themeValue) {
+        return themeValue;
+      }
+
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    };
+
+    const setPreference = () => {
+      localStorage.setItem(storageKey, theme.value);
+      reflectPreference();
+    };
+
+    const theme = {
+      value: getColorPreference(),
+    };
+
+    const reflectPreference = () => {
+      document.firstElementChild?.setAttribute("class", theme.value);
+      document
+        .querySelector("#theme-toggle")
+        ?.setAttribute("aria-label", theme.value);
+    };
+
+    reflectPreference();
+
+    window.onload = () => {
+      reflectPreference();
+
+      document
+        .querySelector("#theme-toggle")
+        ?.addEventListener("click", onClick);
+    };
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", ({ matches: isDark }) => {
+        theme.value = isDark ? "dark" : "light";
+        setPreference();
+      });
+  </script>
+</head>

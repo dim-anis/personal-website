@@ -1,10 +1,14 @@
 ---
-import BaseHead from "@/layouts/Base.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 import RecentPosts from "@/components/RecentPosts.astro";
+import Base from "@/layouts/Base.astro";
 ---
 
-<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Base
+  title="Articles"
+  description="Articles about web development, developer productivity and more!"
+  type="website"
+>
+  >
   <main id="main-content" class="flex-1">
     <section
       aria-labelledby="recent-posts-title"
@@ -21,4 +25,4 @@ import RecentPosts from "@/components/RecentPosts.astro";
       </div>
     </section>
   </main>
-</BaseHead>
+</Base>
