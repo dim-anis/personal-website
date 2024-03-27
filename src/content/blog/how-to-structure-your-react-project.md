@@ -61,7 +61,7 @@ npx create-react-app "myProject"
 
 ... and we're faced with something like this (minus the fluff and other root level folders that aren't necessary for this discussion):
 
-```text {5-9}
+```plaintext {5-9}
 .
 ├── public
 │   ├── favicon.ico
@@ -83,7 +83,7 @@ As far as components go so far we only have one called `<App/>`. While it's poss
 
 As our project grows in size and we start adding other components as well as styles and tests for them our `src` folder grows and it starts looking a little messy - it's very hard to scan such a long list of files.
 
-```text {6-14}
+```plaintext {6-14}
 .
 ├── public
 │   ├── favicon.ico
@@ -112,7 +112,7 @@ It is also a common practice to put all of the components in a separate `compone
 
 We may add other folders to `src` such as `contexts`, `utils` with helper functions, `assets` with images and icons and so on. We might even put on our big-boy and big-girl pants and write our very own hooks!
 
-```text {7-25,27-29}
+```plaintext {7-25,27-29}
 .
 ├── public
 │   ├── favicon.ico
@@ -156,7 +156,7 @@ If by now you have built some page-specific child components - the ones that are
 
 Following the same logic we could also move some of our component-specific hooks, helpers and other types of files next to the components where they are used. This approach of **storing files together if they are used together** becomes even more advantageous as our project grows in size.
 
-```text {24-39}
+```plaintext {24-39}
 .
 └── src
     ├── App.js
