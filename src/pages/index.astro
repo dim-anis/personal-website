@@ -6,7 +6,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Base from "../layouts/Base.astro";
 ---
 
-<Base title={SITE_TITLE} description={SITE_DESCRIPTION} type="website">
+<Base
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  type="website"
+  image="og.png"
+>
   <main id="main-content" class="flex-1">
     <Profile />
     <ListOfArticles />

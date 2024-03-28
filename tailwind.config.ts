@@ -1,4 +1,5 @@
 import { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config: Config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -46,6 +47,10 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        sans: [...fontFamily.sans],
+        heading: [...fontFamily.sans],
       },
       borderRadius: {
         lg: "var(--radius)",
