@@ -15,4 +15,3 @@ export default defineConfig({
   },
   integrations: [react(), mdx(), sitemap(), tailwind()],
 });
-
