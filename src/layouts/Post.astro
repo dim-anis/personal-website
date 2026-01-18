@@ -28,7 +28,7 @@ const isSamePubUpDate = updatedDate?.getTime() === pubDate?.getTime();
   id="main-content"
   class="container flex-1 relative py-10 lg:gap-10 xl:grid xl:grid-cols-[1fr_300px]"
 >
-  <article class="prose dark:prose-invert">
+  <article class="prose dark:prose-invert prose-inline-code:rounded prose-inline-code:border">
     {heroImage && <img src={heroImage} alt="" />}
     <h1>{title}</h1>
     <div class="italic text-sm">
