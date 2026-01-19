@@ -1,5 +1,5 @@
 ---
-title: "SMTP Manual Testing: Telnet vs. Netcat Escapes"
+title: "SMTP Manual Testing: Telnet vs. Netcat Line Endings"
 description: "Learn why SMTP interactions fail when switching from Telnet to Netcat. Discover the CRLF newline quirk and how to manually send escape sequences on macOS."
 subtitle: ""
 pubDate: "2026-01-17"
