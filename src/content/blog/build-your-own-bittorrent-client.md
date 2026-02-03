@@ -5,7 +5,7 @@ description: "I decided to stop treating BitTorrent like a black box and started
 title: Build Your Own BitTorrent Client
 ---
 
-_Note: I've included a lot of code snippets, but not all of the code. This guide is already very comprehensive. You can find the full implementation here <a href="https://github.com/dim-anis/bittorrent-client" target="_blank">here</a>._
+_Note: I've included a lot of code snippets, but not all of the code. This guide is already very comprehensive. You can find the full implementation <a href="https://github.com/dim-anis/bittorrent-client" target="_blank">here</a>._
 
 ## The Backstory
 
